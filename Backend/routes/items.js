@@ -98,7 +98,15 @@ router.get('/categories', async (req, res) => {
 // Get all items
 router.get('/items', async (req, res) => {
   try {
-    const items = await Item.find().populate("reviews");
+    const items = await Item.find().populate({
+      path: 'reviews',
+      select: 'user comment', 
+      populate: {
+        path: 'user',  // If each review references a user, you can populate that too
+        select: 'fullName email'  // Populate fields from the User schema
+      }
+    });
+    
     res.json(items);
   } catch (err) {
     res.status(500).json({ message: err.message });

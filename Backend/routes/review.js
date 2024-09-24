@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post('/item/:Id/review', async (req, res) => {
     const { Id } = req.params;
-    const { userId,comment } = req.body;
+    const { user,comment } = req.body;
   
     try {
       const item = await Item.findById(Id);
@@ -15,7 +15,7 @@ router.post('/item/:Id/review', async (req, res) => {
       }
       // Create new review
       const review = new Review({
-        userId,
+        user,
         comment,
       });
 
