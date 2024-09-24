@@ -39,6 +39,7 @@ function AdminDashboard() {
         console.error("Error fetching orders:", error);
       }
     };
+    console.log(orders)
 
     fetchUsers();
     fetchOrders();
