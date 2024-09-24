@@ -2,10 +2,13 @@ import React from 'react'
 import Nutrients from './Nutrients'
 import Comments from './Comments'
 
-function Info() {
+
+
+function Info({item}) {
+
   return (
     <div>
-      <Nutrients/>
+      <Nutrients item={item}/>
       <Comments/>
     </div>
   )
