@@ -22,7 +22,6 @@ function App() {
     <CartProvider>
       <Router>
         <div className="main-body">
-          <p>Hello</p>
           <NavBar />
           <Routes>
             <Route exact path="/" element={<><Home /></>} />
