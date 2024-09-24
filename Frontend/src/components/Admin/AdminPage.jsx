@@ -45,9 +45,10 @@ function AdminDashboard() {
     fetchOrders();
   }, []);
 
-  const totalEarnings = orders.reduce((total, order) => {
+  const totalEarnings = Array.isArray(orders) ? orders.reduce((total, order) => {
     return total + (parseFloat(order.price) * parseInt(order.quantity));
-  }, 0);
+  }, 0) : 0;
+  
 
   const { user } = useUser();
 
@@ -145,48 +146,57 @@ function AdminDashboard() {
                       <h6 className="m-0 font-weight-bold text-primary">Orders Overview</h6>
                     </div>
                     <div className="card-body">
-                      {orders.map((order) => (
-                        <div className="card mb-3" key={order._id}>
-                          <div className="row no-gutters">
-                            <div className="col-md-4" style={{ alignSelf: 'center' }}>
-                              <img src={order.image} className="card-img" alt="Product" />
-                            </div>
-                            <div className="col-md-8">
-                              <div className="card-body">
-                                <h5 className="card-title">{order.name}</h5>
-                                <div className="text-container">
-                                  <h6>User Name:</h6>
-                                  <p>&nbsp;&nbsp;{order.user.fullName}</p>
-                                </div>
-                                <div className="text-container">
-                                  <h6>Email:</h6>
-                                  <p>&nbsp;&nbsp;{order.user.email}</p>
-                                </div>
-                                <div className="text-container">
-                                  <h6>Price:</h6>
-                                  <p>&nbsp;&nbsp;₹{order.price}</p>
-                                </div>
-                                <div className="text-container">
-                                  <h6>Address:</h6>
-                                  <p>&nbsp;&nbsp;{order.delivery_address}</p>
-                                </div>
-                                <div className="text-container">
-                                  <h6>Quantity:</h6>
-                                  <p>&nbsp;&nbsp;{order.quantity}</p>
-                                </div>
-                                <div className="text-container">
-                                  <h6>Total Price:</h6>
-                                  <p>&nbsp;&nbsp;₹{order.price * order.quantity}</p>
-                                </div>
-                                <div className="text-container">
-                                  <h6>Order ID:</h6>
-                                  <p>&nbsp;&nbsp;{order._id}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
+                    {orders.map((order) => (
+  <div className="card mb-3" key={order._id}>
+    <div className="row no-gutters">
+      <div className="col-md-4" style={{ alignSelf: 'center' }}>
+        <img src={order.image} className="card-img" alt="Product" />
+      </div>
+      <div className="col-md-8">
+        <div className="card-body">
+          <h5 className="card-title">{order.name}</h5>
+          {order.user ? (
+            <>
+              <div className="text-container">
+                <h6>User Name:</h6>
+                <p>&nbsp;&nbsp;{order.user.fullName}</p>
+              </div>
+              <div className="text-container">
+                <h6>Email:</h6>
+                <p>&nbsp;&nbsp;{order.user.email}</p>
+              </div>
+            </>
+          ) : (
+            <div className="text-container">
+              <p>&nbsp;&nbsp;User information not available</p>
+            </div>
+          )}
+          <div className="text-container">
+            <h6>Price:</h6>
+            <p>&nbsp;&nbsp;₹{order.price}</p>
+          </div>
+          <div className="text-container">
+            <h6>Address:</h6>
+            <p>&nbsp;&nbsp;{order.delivery_address}</p>
+          </div>
+          <div className="text-container">
+            <h6>Quantity:</h6>
+            <p>&nbsp;&nbsp;{order.quantity}</p>
+          </div>
+          <div className="text-container">
+            <h6>Total Price:</h6>
+            <p>&nbsp;&nbsp;₹{order.price * order.quantity}</p>
+          </div>
+          <div className="text-container">
+            <h6>Order ID:</h6>
+            <p>&nbsp;&nbsp;{order._id}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
+
                     </div>
                   </div>
                 </div>
