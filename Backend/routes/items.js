@@ -98,7 +98,7 @@ router.get('/categories', async (req, res) => {
 // Get all items
 router.get('/items', async (req, res) => {
   try {
-    const items = await Item.find();
+    const items = await Item.find().populate("reviews");
     res.json(items);
   } catch (err) {
     res.status(500).json({ message: err.message });
