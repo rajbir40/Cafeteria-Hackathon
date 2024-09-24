@@ -12,7 +12,7 @@ const itemRouter = require("./routes/items");
 // const MapRouter = require("./routes/map");
 
 app.listen(PORT, () => console.log(`Server Running on PORT:${PORT}`));
-ConnectMongoDB("mongodb+srv://gurnoor8520:teradaddy420@cluster0.sffmssb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/foodie/")
+ConnectMongoDB("mongodb+srv://gurnoor8520:mrdewsis@cluster0.hfshp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/cafetria-hackathon")
   .then(() => console.log("MongoDB Connected Successfully."))
   .catch((err) => console.log("Error Connecting MongoDB", err));
 
