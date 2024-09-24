@@ -25,7 +25,6 @@ router.post("/signin", async (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-  console.log("SignUp Request Received");
   const { fullName, email, password, mobile, Address } = req.body;
   try {
     await USER.create({
@@ -45,12 +44,10 @@ router.post("/signup", async (req, res) => {
 });
 
 router.get("/signout", (req, res) => {
-  console.log("SignOut Request Received");
   res.clearCookie("token").redirect("/");
 });
 
 router.post("/user/delete", async (req, res) => {
-  console.log("Delete User Request Received")
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
   if (!token) {
@@ -72,7 +69,6 @@ router.post("/user/delete", async (req, res) => {
 })
 
 router.post("/user/add-order", async (req, res) => {
-  console.log("Add Order Request Received");
 
   const { name, price, delivery_address, quantity, image , payment_method} = req.body;
 
@@ -113,7 +109,6 @@ router.post("/user/add-order", async (req, res) => {
 
 
 router.post('/user/update', async (req, res) => {
-  console.log("User Update Req Received")
   try {
     const { _id, fullName, email, mobile } = req.body;
 
@@ -142,7 +137,6 @@ router.post('/user/update', async (req, res) => {
 
 
 router.get("/user", async (req, res) => {
-  console.log("Get User Request Received")
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
   if (!token) {
@@ -170,11 +164,9 @@ router.get("/user", async (req, res) => {
 
 
 router.get("/users", async (req, res) => {
-  console.log("Get All Users Request Received");
 
   try {
     const users = await USER.find({}, { password: 0 });
-    // console.log(users);
     if (!users || users.length === 0) {
       return res.status(404).json({ error: "No users found" });
     }
@@ -187,7 +179,6 @@ router.get("/users", async (req, res) => {
 });
 
 router.get("/orders", async (req, res) => {
-  console.log("Get All Orders Request Received");
 
   try {
     const orders = await ORDER.find({}).populate("user");
