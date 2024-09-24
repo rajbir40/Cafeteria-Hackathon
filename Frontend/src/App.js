@@ -13,6 +13,7 @@ import ShoppingCart from './components/Cart/ShoppingCart.jsx';
 import ErrorPage from './components/Error/error'; 
 import AdminDashboard from './components/Admin/AdminPage'; 
 import AboutUs from "./components/About-Us/aboutpage"
+import Info from './components/Nut_N_Rev/Info';
 
 
 function App() {
@@ -23,20 +24,22 @@ function App() {
         <div className="main-body">
           <NavBar />
           <Routes>
-            <Route exact path="/" element={<><Home /><Footer /></>} />
-            <Route exact path="/menu" element={<><MenuPage /><Footer /></>} />
+            <Route exact path="/" element={<><Home /></>} />
+            <Route exact path="/menu" element={<><MenuPage /></>} />
             <Route path="/sign-in" element={<Login />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/cart" element={<ShoppingCart />} />
 
 
-            <Route path="/admin/" element={<><AdminDashboard /><Footer /></>} />
-            <Route path="/admin/add-items" element={<><AddItem /><Footer /></>} />
-            <Route path="/about-us" element={<><AboutUs /><Footer /></>} />
+            <Route path="/admin/" element={<><AdminDashboard /></>} />
+            <Route path="/admin/add-items" element={<><AddItem /></>} />
+            <Route path="/about-us" element={<><AboutUs /></>} />
+            <Route path="/Info" element={<><Info /></>} />
             
             <Route path="*" element={<ErrorPage />} />
           </Routes>
+          <Footer />
         </div>
       </Router>
     </CartProvider>

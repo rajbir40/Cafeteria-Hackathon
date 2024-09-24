@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { type } = require('os');
 
 const itemSchema = new mongoose.Schema({
     item_title: {
@@ -22,6 +23,11 @@ const itemSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    item_nutrient: {
+        type: [String],
+        required: true,
+    },
+    
 });
 
 const Item = mongoose.model('item', itemSchema);
