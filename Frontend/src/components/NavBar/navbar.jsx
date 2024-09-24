@@ -104,7 +104,7 @@ function Navbar() {
               <div className="user-info">
                 <div className="dropdown">
                   <button className="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded={menuOpen ? 'true' : 'false'} onClick={toggleMenu}>
-                    <img  src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Icon" className="round-icon py2" />
+                    <img  src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Icon" className=" py2 w-10" />
                   </button>
                   <div className={`dropdown-menu ${menuOpen ? 'show' : ''}`} aria-labelledby="dropdownMenuButton">
                     <a className="dropdown-item" href="#">Welcome, {user.fullName.split(" ")[0]}</a>

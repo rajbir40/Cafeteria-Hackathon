@@ -5,11 +5,11 @@ import Comments from './Comments'
 
 
 function Info({item}) {
-
+  // console.log(item)
   return (
     <div>
       <Nutrients item={item}/>
-      <Comments/>
+      <Comments item = {item}/>
     </div>
   )
 }
