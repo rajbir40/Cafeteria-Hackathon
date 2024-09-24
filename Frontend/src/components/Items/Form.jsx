@@ -19,7 +19,7 @@ const MyComponent = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(`${serverURL}/api/add-new/categories`);
-        setCategories(response.data);
+        setCategories(response.data || []);
       } catch (error) {
         console.error('Error fetching categories:', error);
       }
@@ -46,7 +46,6 @@ const MyComponent = () => {
       };
 
       const newItemResponse = await axios.post(`${serverURL}/api/add-new/items`, newItemData);
-      console.log('Added item:', newItemResponse.data);
   
      
       if (!newItemResponse.data || !newItemResponse.data._id) {
@@ -55,7 +54,6 @@ const MyComponent = () => {
       }
   
      const response = await axios.put(`${serverURL}/api/add-new/categories/${categoryId}/addItem`, { itemId: newItemResponse.data._id });
-      console.log('Added item to category:', response.data);
   
       const updatedCategory = response.data;
       const updatedCategories = categories.map(category => {

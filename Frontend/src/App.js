@@ -15,7 +15,6 @@ import AdminDashboard from './components/Admin/AdminPage';
 import AboutUs from "./components/About-Us/aboutpage"
 import Info from './components/Nut_N_Rev/Info';
 
-
 function App() {
   
   return (
@@ -32,10 +31,10 @@ function App() {
             <Route path="/cart" element={<ShoppingCart />} />
 
 
-            <Route path="/admin/" element={<><AdminDashboard /></>} />
-            <Route path="/admin/add-items" element={<><AddItem /></>} />
-            <Route path="/about-us" element={<><AboutUs /></>} />
-            <Route path="/Info" element={<><Info /></>} />
+
+            <Route path="/admin/" element={<><AdminDashboard /><Footer /></>} />
+            <Route path="/admin/add-items" element={<><AddItem /><Footer /></>} />
+            <Route path="/about-us" element={<><AboutUs /><Footer /></>} />
             
             <Route path="*" element={<ErrorPage />} />
           </Routes>

@@ -8,7 +8,6 @@ const AddItemForm = ({ categories, onAddItem }) => {
   const [offer, setOffer] = useState('');
   const [image, setImage] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
-console.log(categories[0].category_title)
   const handleSubmit = (e) => {
     e.preventDefault();
     const newItem = {
@@ -60,18 +59,11 @@ console.log(categories[0].category_title)
       <div className="form-group">
         <label>Select Category:</label>
         <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} required>
-  <option value="">Select a category</option>
-  {categories && categories.length > 0 ? (
-    categories.map(category => (
-      <option key={category._id} value={category._id}>
-        {category.category_title}
-      </option>
-    ))
-  ) : (
-    <option disabled>No categories available</option>
-  )}
-</select>
-
+          <option value="">Select a category</option>
+          {categories.length>0 && categories.map(category => (
+            <option key={category._id} value={category._id}>{category.category_title}</option>
+          ))}
+        </select>
       </div>
       <button type="submit" className="btn-submit">Add Item</button>
     </form>

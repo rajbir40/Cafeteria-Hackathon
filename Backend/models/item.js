@@ -23,11 +23,11 @@ const itemSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    item_nutrient: {
-        type: [String],
-        required: true,
-    },
-    
+    review: {
+        type: Array,
+        default: [],
+        required: false,
+    }
 });
 
 const Item = mongoose.model('item', itemSchema);
