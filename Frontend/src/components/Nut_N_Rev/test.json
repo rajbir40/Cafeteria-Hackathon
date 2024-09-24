@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "date": "2023-04-17",
+      "text": "This is a sample comment. Lorem ipsum dolor sit amet..."
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "date": "2023-04-16",
+      "text": "I agree with John. Lorem ipsum dolor sit amet..."
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "date": "2023-04-15",
+      "text": "I have a different opinion. Lorem ipsum dolor sit amet..."
+    }
+  ]
+  
