@@ -39,7 +39,6 @@ function AdminDashboard() {
         console.error("Error fetching orders:", error);
       }
     };
-    console.log(orders)
 
     fetchUsers();
     fetchOrders();
@@ -158,8 +157,6 @@ function AdminDashboard() {
                   </div>
 
                   {/* Orders Overview */}
-                  {orders && orders.length>0 ? (
-                    <>
                       <div className="row" style={{ justifyContent: "center" }}>
                         <div className="col-xl-8 col-lg-7">
                           <div className="card shadow mb-4">
@@ -168,7 +165,9 @@ function AdminDashboard() {
                                 Orders Overview
                               </h6>
                             </div>
-                            <div className="card-body">
+                           {orders && orders.length>0 ? 
+                           <>
+                             <div className="card-body">
                               {orders.map((order) => (
                                 <div className="card mb-3" key={order._id}>
                                   <div className="row no-gutters">
@@ -228,13 +227,10 @@ function AdminDashboard() {
                                 </div>
                               ))}
                             </div>
+                           </> : <>No Order Found</>}
                           </div>
                         </div>
                       </div>
-                    </>
-                  ) : (
-                    <>No Orders Found</>
-                  )}
                 </div>
               </div>
             </div>
