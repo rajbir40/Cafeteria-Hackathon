@@ -12,6 +12,7 @@ const SignUp = () => {
   const [repeatedPassword, setRepeatedPassword] = useState('');
   const [mobile, setMobile] = useState('');
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +23,7 @@ const SignUp = () => {
     }
 
     try {
+      setIsSubmitting(true);
       const response = await fetch(`${serverURL}/api/signup`, {
         method: 'POST',
         headers: {
@@ -45,6 +47,8 @@ const SignUp = () => {
     } catch (error) {
       console.error('Error:', error);
       setError('An error occurred, please try again later');
+    } finally{
+      setIsSubmitting(false);
     }
   };
 
@@ -114,7 +118,9 @@ const SignUp = () => {
             />
           </div>
           <div className="form-group form-button">
-            <input type="submit" name="signup" id="signup" className="form-submit" value="Register" />
+          <button type="submit" name="signup" id="signup" className="form-submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                  </button>
           </div>
           {error && <div className="error-message">{error}</div>}
         </form>

@@ -10,13 +10,14 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [cookies, setCookie] = useCookies(['token']);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      setIsSubmitting(true);
       const response = await fetch(`${serverURL}/api/signin`, {
         method: 'POST',
         headers: {
@@ -37,6 +38,8 @@ const Login = () => {
     } catch (error) {
       console.error('Error:', error);
       setError('An error occurred, please try again later');
+    } finally{
+      setIsSubmitting(false);
     }
   };
 
@@ -76,7 +79,9 @@ const Login = () => {
                   />
                 </div>
                 <div className="form-group form-button">
-                  <input type="submit" name="signin" id="signin" className="form-submit" value="Log in" />
+                  <button type="submit" name="signin" id="signin" className="form-submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                  </button>
                 </div>
                 {error && <div className="error-message">{error}</div>}
               </form>
