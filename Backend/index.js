@@ -9,7 +9,6 @@ const { ConnectMongoDB } = require("./connection");
 const { CheckforAuthCookie } = require("./middlewares/auth");
 const router = require("./routes/user");
 const itemRouter = require("./routes/items");
-// const MapRouter = require("./routes/map");
 
 app.listen(PORT, () => console.log(`Server Running on PORT:${PORT}`));
 ConnectMongoDB("mongodb+srv://gurnoor8520:mrdewsis@cluster0.hfshp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/cafetria-hackathon")
