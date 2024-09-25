@@ -1,6 +1,5 @@
 import React, { useState,useContext } from 'react';
 import './Navbar.css'; // Import CSS file
-import '../../index.css';
 import icon from '../../assets/icon.svg';
 import icon2 from '../../assets/th.jpeg';
 import locationIcon from '../../assets/location.svg';
@@ -89,23 +88,23 @@ function Navbar() {
         <div className="nav-right-menu">
         <div className="shopping-cart-box btn-box border-right">
             <a href="/about-us" className='anchorTag'><img src={AboutIcon} alt="" className="icon-svg btn-icon" />
-              <p className='my-2'>About</p></a>
+              <p>About</p></a>
           </div>
           <div className="discount-box btn-box border-right">
             <a href="/menu" className='anchorTag'><img src={discountIcon} alt="" className="icon-svg btn-icon" />
-              <p className='my-2'>Deals</p></a>
+              <p>Deals</p></a>
           </div>
           <div className="shopping-cart-box btn-box border-right shopping-cart-box-float">
             <a href="/cart" className='anchorTag'><img src={cartIcon} alt="" className="icon-svg btn-icon" />
             <p className='cart-text'>{size}</p>
-              <p className='my-2'>Cart</p></a>
+              <p>Cart</p></a>
           </div>
           <div className="sign-in-box btn-box">
             {user ? (
               <div className="user-info">
                 <div className="dropdown">
                   <button className="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded={menuOpen ? 'true' : 'false'} onClick={toggleMenu}>
-                    <img  src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Icon" className=" py2 w-10" />
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Icon" className="round-icon" />
                   </button>
                   <div className={`dropdown-menu ${menuOpen ? 'show' : ''}`} aria-labelledby="dropdownMenuButton">
                     <a className="dropdown-item" href="#">Welcome, {user.fullName.split(" ")[0]}</a>
@@ -118,7 +117,7 @@ function Navbar() {
               </div>
             ) : (
               <a href="/sign-in" className='anchorTag'><img src={signInIcon} alt="" className="icon-svg btn-icon" />
-                <p className='my-2'>Sign In</p></a>
+                <p>Sign In</p></a>
             )}
           </div>
         </div>
