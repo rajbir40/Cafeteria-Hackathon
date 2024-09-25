@@ -37,7 +37,7 @@ function Navbar() {
 
   return (
     <header className="top-nav">
-      <div className="small-device-menu" style={{backgroundColor:'black'}}>
+      <div className="small-device-menu bg-slate-800" >
         <div className="menu-top">
           <div className={`menu-icon-box ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
             <label className={`menu-line menu-line1 ${menuOpen ? 'menu-close1' : ''}`}></label>
@@ -70,12 +70,12 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className="top-nav-box" style={{backgroundColor:'black',color:'greenyellow'}}>
+      <div className="top-nav-box bg-green-800" >
         <div className="top-nav-box1">
           <div className="icon">
             <a href="/"><img src={mr_dewsis} className="icon-img" alt="" /></a>
           </div>
-          <div className="search-bar">
+          {/* <div className="search-bar"> */}
             {/* <p style={{textAlign:'center'}}> <span style={{visibility:'hidden'}}>helllooooo</span>Enjoy the FRESH BITE</p> */}
             {/* <div className="location-search search-box">
               <input type="search" className="search location-search-input" name="location-search" placeholder="Jaipur" />
@@ -85,10 +85,10 @@ function Navbar() {
               <input type="search" className="search search-input" name="search-bar" placeholder="Hungry !" />
               <img src={searchIcon} alt="" className="search-icon icon-svg" />
             </div> */}
-          </div>
+          {/* </div> */}
         </div>
-        <div className="nav-right-menu">
-        <div className="shopping-cart-box btn-box border-right">
+        <div className="nav-right-menu my-auto">
+        <div className="shopping-cart-box btn-box border-right ">
             <a href="/about-us" className='anchorTag'><img src={AboutIcon} alt="" className="icon-svg btn-icon" />
               <p className='my-2' style={{color:'greenyellow'}}>About</p></a>
           </div>
