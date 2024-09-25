@@ -102,7 +102,7 @@ function Navbar() {
           <div className="sign-in-box btn-box w-auto">
             {user ? (
               <div className="user-info">
-                <div className="dropdown">
+                <div className="dropdown mr-[150px]">
                   <button className="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded={menuOpen ? 'true' : 'false'} onClick={toggleMenu}>
                     <img  src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Icon" className=" py2 w-10" />
                   </button>

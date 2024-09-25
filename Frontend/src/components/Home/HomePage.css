@@ -164,7 +164,7 @@
 
 .divv4 {
     display: flex;
-    background-image: linear-gradient(to bottom, rgb(249, 183, 61, 0.7), rgb(249, 183, 61, 0.60), rgb(249, 183, 61, 0.53), rgb(249, 183, 61, 0.45));
+    background-image: linear-gradient(to bottom, rgba(72, 241, 16, 0.7), rgba(52, 204, 10, 0.6), rgba(100, 238, 1, 0.53), rgba(141, 254, 21, 0.45));
 }
 
 .divv4 .text {
@@ -223,7 +223,7 @@
 }
 
 .divv4 h1 span {
-    color: #FFA700
+    color: #248D27
 }
 
 .divv4 .box {
@@ -273,7 +273,7 @@
 }
 
 .divv5 .sub1 h1 span {
-    color: #FFA700;
+    color: #248D27;
 }
 
 .divv5 .sub1 p {
