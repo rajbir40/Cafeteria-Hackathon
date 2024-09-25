@@ -27,7 +27,7 @@ const FoodItem = ({ item }) => {
 
   return (
     <div className="item-card">
-      <img src={item_src} alt="" className="item-image" />
+      <img src={item_src} alt="" className="item-image size-72" />
       <div className="card-box">
         <div className="item-title">
           <img src={VegIcon} alt="" className={`veg-nonveg ${foodTypeClass}`} />
@@ -51,7 +51,9 @@ const FoodItem = ({ item }) => {
         <div className="item-offer">
           <p className="item-offer-text">{item_offer}</p>
           <div className="offer-info-div">
+          <a href={`/info/${_id}`}>
             <img src={InfoImage} alt="" className="offer-info" />
+          </a>
             <div className="offer-info-pop">Hurry Up Order Now</div>
           </div>
         </div>

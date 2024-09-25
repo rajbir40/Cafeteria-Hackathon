@@ -1,6 +1,7 @@
 const Category = require('../models/category');
 const Item = require('../models/item');
 const express = require("express");
+const NUTRIENTS = require('../models/Nutrients');
 const router = express.Router();
 
 router.get('/food-items', async (req, res) => {
@@ -34,7 +35,9 @@ router.post('/categories', async (req, res) => {
 // Create a new item
 router.post('/items', async (req, res) => {
   try {
-    const { item_title, item_type, item_price, item_offer, item_src } = req.body;
+    const { item_title, item_type, item_price, item_offer, item_src,
+        calories, fat, protein, carbohydrates, cholestrol
+     } = req.body;
     let newItem;
     if(item_offer===""){
         newItem = new Item({
@@ -53,6 +56,20 @@ router.post('/items', async (req, res) => {
             item_src,
           });
     }
+      const nutrient= new NUTRIENTS({
+        calories,
+        fat,
+        protein,
+        carbohydrates,
+        cholestrol,
+      });
+
+      newItem.nutrients=nutrient._id;
+  
+      await nutrient.save();
+
+      await newItem.save();
+
     const savedItem = await newItem.save();
     res.status(201).json(savedItem);
   } catch (err) {
@@ -105,7 +122,7 @@ router.get('/items', async (req, res) => {
         path: 'user',  // If each review references a user, you can populate that too
         select: 'fullName email'  // Populate fields from the User schema
       }
-    });
+    }).populate("nutrients");
     
     res.json(items);
   } catch (err) {
