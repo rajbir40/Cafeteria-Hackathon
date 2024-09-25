@@ -3,7 +3,7 @@ import "./style.css"
 
 import AboutPage from "../../assets/food-delivery2.jpg"
 import ABoutPage2 from "../../assets/food-delivery-concept.jpg"
-
+import dewsis_about_us from "../../assets/dewsis_about_us.jpeg"
 function AboutSection() {
     return (
         <>
@@ -11,7 +11,7 @@ function AboutSection() {
                 <div className="container cont-about">
                     <div className="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
                         <div className="col-12 col-lg-6 col-xl-5">
-                            <img className="img-fluid rounded" loading="lazy" src={AboutPage} alt="About Foodie" />
+                            <img className="img-fluid rounded" loading="lazy" src={dewsis_about_us} alt="About Foodie" style={{marginLeft:'60px', height:'40vh'}}/>
                         </div>
                         <div className="col-12 col-lg-6 col-xl-7">
                             <div className="row justify-content-xl-center">
