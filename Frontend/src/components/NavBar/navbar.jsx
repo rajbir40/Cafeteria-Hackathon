@@ -1,6 +1,7 @@
 import React, { useState,useContext } from 'react';
 import './Navbar.css'; // Import CSS file
 import icon from '../../assets/icon.svg';
+import icon2 from '../../assets/th.jpeg';
 import locationIcon from '../../assets/location.svg';
 import searchIcon from '../../assets/icons8-search-50.svg';
 import discountIcon from '../../assets/discount.svg';
@@ -42,7 +43,7 @@ function Navbar() {
             <label className={`menu-line menu-line2 ${menuOpen ? 'menu-close2' : ''}`}></label>
             <label className={`menu-line menu-line3 ${menuOpen ? 'menu-close3' : ''}`}></label>
           </div>
-          <a href="/"><img className="icon-img" src={icon} alt="" /></a>
+          <a href="/"><img className="icon-img" src={icon2} alt="" /></a>
         </div>
         <div className={`menu-content ${menuOpen ? 'active' : ''}`}>
           <div className="menu-ol">
@@ -71,7 +72,7 @@ function Navbar() {
       <div className="top-nav-box">
         <div className="top-nav-box1">
           <div className="icon">
-            <a href="/"><img src={icon} className="icon-img" alt="" /></a>
+            <a href="/"><img src={icon2} className="icon-img" alt="" /></a>
           </div>
           <div className="search-bar">
             <div className="location-search search-box">

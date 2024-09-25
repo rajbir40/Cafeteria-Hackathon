@@ -105,4 +105,15 @@ router.get('/items', async (req, res) => {
   }
 });
 
+// Delete a item
+router.delete('/item/:id', async (req,res)=> {
+  try {
+    const itemId = req.params.id;
+    const items = await Item.findOneAndDelete(itemId);
+    res.json("item deleted");
+  }catch(err){
+    res.status(500).json({message: err.message});
+  }
+});
+
 module.exports = router;

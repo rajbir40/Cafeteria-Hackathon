@@ -11,7 +11,7 @@
   }
   
   .top-nav {
-    width: 100vw;
+    width: 100%;
     position: sticky;
     top: 0;
     display: flex;
@@ -120,7 +120,7 @@
   }
   
   .top-nav-box {
-    width: 90%;
+    width: 100%;
     /* overflow-x: hidden; */
     display: flex;
     justify-content: space-between;
