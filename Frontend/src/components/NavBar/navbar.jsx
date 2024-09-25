@@ -1,6 +1,5 @@
 import React, { useState,useContext } from 'react';
 import './Navbar.css'; // Import CSS file
-import '../../index.css';
 import icon from '../../assets/icon.svg';
 // import mr_dewsis from '../../assets/category-images/mr_dewsis.png';
 import locationIcon from '../../assets/location.svg';
@@ -38,7 +37,7 @@ function Navbar() {
 
   return (
     <header className="top-nav">
-      <div className="small-device-menu" style={{backgroundColor: 'grey'}}>
+      <div className="small-device-menu bg-slate-800" >
         <div className="menu-top">
           <div className={`menu-icon-box ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
             <label className={`menu-line menu-line1 ${menuOpen ? 'menu-close1' : ''}`}></label>
@@ -71,12 +70,12 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className="top-nav-box" style={{backgroundColor:'black',color:'greenyellow'}}>
+      <div className="top-nav-box bg-green-800" >
         <div className="top-nav-box1">
           <div className="icon">
             <a href="/"><img src={mr_dewsis} className="icon-img" alt="" /></a>
           </div>
-          <div className="search-bar">
+          {/* <div className="search-bar"> */}
             {/* <p style={{textAlign:'center'}}> <span style={{visibility:'hidden'}}>helllooooo</span>Enjoy the FRESH BITE</p> */}
             {/* <div className="location-search search-box">
               <input type="search" className="search location-search-input" name="location-search" placeholder="Jaipur" />
@@ -86,10 +85,10 @@ function Navbar() {
               <input type="search" className="search search-input" name="search-bar" placeholder="Hungry !" />
               <img src={searchIcon} alt="" className="search-icon icon-svg" />
             </div> */}
-          </div>
+          {/* </div> */}
         </div>
-        <div className="nav-right-menu">
-        <div className="shopping-cart-box btn-box border-right">
+        <div className="nav-right-menu my-auto">
+        <div className="shopping-cart-box btn-box border-right ">
             <a href="/about-us" className='anchorTag'><img src={AboutIcon} alt="" className="icon-svg btn-icon" />
               <p className='my-2' style={{color:'greenyellow'}}>About</p></a>
           </div>
@@ -107,7 +106,7 @@ function Navbar() {
               <div className="user-info">
                 <div className="dropdown">
                   <button className="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded={menuOpen ? 'true' : 'false'} onClick={toggleMenu}>
-                    <img  src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Icon" className=" py2 w-10" />
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Icon" className="round-icon" />
                   </button>
                   <div className={`dropdown-menu ${menuOpen ? 'show' : ''}`} aria-labelledby="dropdownMenuButton">
                     <a className="dropdown-item" href="#">Welcome, {user.fullName.split(" ")[0]}</a>
@@ -120,7 +119,7 @@ function Navbar() {
               </div>
             ) : (
               <a href="/sign-in" className='anchorTag'><img src={signInIcon} alt="" className="icon-svg btn-icon" />
-                <p className='my-2' style={{color:'greenyellow'}}>Sign In</p></a>
+                <p>Sign In</p></a>
             )}
           </div>
         </div>

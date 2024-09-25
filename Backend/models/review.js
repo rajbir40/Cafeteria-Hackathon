@@ -1,17 +1,17 @@
 const mongoose = require("mongoose");
 
 const reviewSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"User"
-    },
+    _id: ObjectId,
+    mealId: ObjectId,  
+    userId: ObjectId,  
+    rating: Number,    
     comment: String,
-    createdAt: {
-        type:Date,
-        default:Date.now()
-    }
+    createdAt: Date
 },{timestamps:true});
 
 const REVIEW = mongoose.model("Review", reviewSchema);
 
-module.exports = REVIEW
+module.exports = {
+    REVIEW,
+    reviewSchema,
+};

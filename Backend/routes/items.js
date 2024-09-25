@@ -98,15 +98,7 @@ router.get('/categories', async (req, res) => {
 // Get all items
 router.get('/items', async (req, res) => {
   try {
-    const items = await Item.find().populate({
-      path: 'reviews',
-      select: 'user comment', 
-      populate: {
-        path: 'user',  // If each review references a user, you can populate that too
-        select: 'fullName email'  // Populate fields from the User schema
-      }
-    });
-    
+    const items = await Item.find();
     res.json(items);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -121,20 +113,6 @@ router.delete('/item/:id', async (req,res)=> {
     res.json("item deleted");
   }catch(err){
     res.status(500).json({message: err.message});
-  }
-});
-
-router.get('/item/:id', async (req, res) => {
-  try {
-    const id = req.params.id;
-    const item = await Item.findById(id);
-    if(!item) {
-      return res.json({message:"Item not Found."})
-    }
-
-    res.json(item);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
   }
 });
 
