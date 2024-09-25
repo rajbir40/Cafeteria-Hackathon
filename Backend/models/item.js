@@ -23,10 +23,11 @@ const itemSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    reviews: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"Review"
-    }] 
+    review: {
+        type: Array,
+        default: [],
+        required: false,
+    }
 });
 
 const Item = mongoose.model('item', itemSchema);

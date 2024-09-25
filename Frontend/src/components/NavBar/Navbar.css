@@ -11,7 +11,7 @@
   }
   
   .top-nav {
-    width: 100vw;
+    width: 100%;
     position: sticky;
     top: 0;
     display: flex;
@@ -120,7 +120,7 @@
   }
   
   .top-nav-box {
-    width: 90%;
+    width: 100%;
     /* overflow-x: hidden; */
     display: flex;
     justify-content: space-between;
@@ -137,8 +137,9 @@
   
   .icon-img {
     cursor: pointer;
-    height: 80px;
+    height: 60px;
     margin-right: 25px;
+    margin-top: 10px;
   }
   
   .search-box {
@@ -184,7 +185,7 @@
   }
   
   .anchorTag{
-    color: black;
+    color: rgba(119, 244, 29, 0.893);
     text-align: end;
     display: flex;
     align-items: center;
@@ -203,7 +204,7 @@
     padding-right: 15px;
     align-items:center;
     font-weight: 700;
-    color: rgb(0, 0, 0);
+    color: rgb(172, 237, 32);
     font-size: 14px;
   }
   
