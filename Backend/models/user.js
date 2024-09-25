@@ -27,6 +27,11 @@ const UserSchema = new mongoose.Schema({
     salt: {
         type: String,
     },
+    otp:{
+        type:String,
+        required:false,
+        default:null,
+    },
     RecentOrders: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order',

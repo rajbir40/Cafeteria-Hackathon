@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 
 function Reviews({ item }) {
@@ -22,7 +21,7 @@ function Reviews({ item }) {
                 key={comment._id}
                 className="bg-white p-4 rounded-lg shadow-md"
               >
-                <h3 className="text-lg font-bold">{comment.user.fullName}</h3>
+                {/* <h3 className="text-lg font-bold">{comment.user.fullName}</h3> */}
                 <p className="text-gray-700 text-sm mb-2">
                   Posted on{" "}
                   {new Date(Date.parse(comment.createdAt)).toLocaleString(

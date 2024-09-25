@@ -8,7 +8,6 @@ const serverURL = "http://localhost:5000";
 function AdminDashboard() {
   const [users, setUsers] = useState([]);
   const [orders, setOrders] = useState([]);
-  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -44,9 +43,6 @@ function AdminDashboard() {
     fetchUsers();
     fetchOrders();
   }, []);
-
-
-
 
   const totalEarnings = orders.length>0 ? orders.reduce((total, order) => {
     return total + parseFloat(order.price) * parseInt(order.quantity);
