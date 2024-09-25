@@ -1,36 +1,27 @@
-
 import React from 'react'
+import Table from './Table'
 
-function Nutrients() {
+function Nutrients({item}) {
   return (
     <section>
-  <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+  <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-6 sm:py-24 lg:px-8">
     <div className="max-w-3xl">
       <h2 className="text-3xl font-bold sm:text-4xl">
-        Food A
+        {item.item_title}
       </h2>
     </div>
 
-    <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-      <div className="relative h-64 overflow-hidden sm:h-80 lg:h-full">
+    <div className=" grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+      <div className="relative h-64 overflow-hidden sm:h-80 lg:h-full border-2">
         <img
           alt=""
-          src="https://images.unsplash.com/photo-1496843916299-590492c751f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80"
-          className="absolute inset-0 h-full w-full object-cover"
+          src={item.item_src}
+          className="absolute inset-0 m-auto w-full object-cover"
         />
       </div>
 
-      <div className="lg:py-16">
-        <article className="space-y-4 text-gray-600">
-          <h1 className='text-red-500 text-2xl font-bold'>Nutrition Information:</h1>
-          <ul type='square'>
-            <p className='text-red-500'>Per Serving</p>
-            <li>Calories: 400</li>
-            <li>Carbs: 20</li>
-            <li>Fat: 10</li>
-            <li>Protein: 20</li>
-          </ul>
-        </article>
+      <div className="lg:py-1">
+       <Table/>
       </div>
     </div>
   </div>

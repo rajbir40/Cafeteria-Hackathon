@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './components/Cart/CartContext';
@@ -18,8 +17,6 @@ import Info from './components/Nut_N_Rev/Info';
 import axios from 'axios';
 
 const serverURL = 'http://localhost:5000';
-
-//asd
 
 function App() {
   const [Items, setItems] = useState([]);
