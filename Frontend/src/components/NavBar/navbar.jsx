@@ -2,6 +2,7 @@ import React, { useState,useContext } from 'react';
 import './Navbar.css'; // Import CSS file
 import '../../index.css';
 import icon from '../../assets/icon.svg';
+// import mr_dewsis from '../../assets/category-images/mr_dewsis.png';
 import locationIcon from '../../assets/location.svg';
 import searchIcon from '../../assets/icons8-search-50.svg';
 import discountIcon from '../../assets/discount.svg';
@@ -11,6 +12,7 @@ import { useUser } from '../userContext';
 import { useCookies } from 'react-cookie';
 import { CartContext } from '../Cart/CartContext';
 import AboutIcon from "../../assets/icons8-about.svg"
+import mr_dewsis from '../../assets/mr_dewsis.png'
 
 function Navbar() {
   const { user, updateUser } = useUser();
@@ -36,14 +38,14 @@ function Navbar() {
 
   return (
     <header className="top-nav">
-      <div className="small-device-menu">
+      <div className="small-device-menu" style={{backgroundColor:'black'}}>
         <div className="menu-top">
           <div className={`menu-icon-box ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
             <label className={`menu-line menu-line1 ${menuOpen ? 'menu-close1' : ''}`}></label>
             <label className={`menu-line menu-line2 ${menuOpen ? 'menu-close2' : ''}`}></label>
             <label className={`menu-line menu-line3 ${menuOpen ? 'menu-close3' : ''}`}></label>
           </div>
-          <a href="/"><img className="icon-img" src={icon} alt="" /></a>
+          <a href="/"><img className="icon-img" src={mr_dewsis} alt="" /></a>
         </div>
         <div className={`menu-content ${menuOpen ? 'active' : ''}`}>
           <div className="menu-ol">
@@ -55,11 +57,11 @@ function Navbar() {
                   {user.role === "Admin" ? <li className="sign-in-mobile"><a href="/admin">Admin</a></li> 
                     : <li className="sign-in-mobile"><a href="/profile">Profile</a></li> 
                   }
-                   <li className="sign-out" onClick={handleSignOut}><a >Sign Out</a></li>
+                   <li className="sign-out" onClick={handleSignOut} style={{color:'greenyellow'}}><a >Sign Out</a></li>
                 </>
               ) : (
                 <>
-                  <li className="sign-in-mobile"><a href="/sign-in">Sign In</a></li>
+                  <li className="sign-in-mobile" style={{color:'greenyellow'}}><a href="/sign-in">Sign In</a></li>
                   <li className="sign-in-mobile"><a href="/sign-up">Sign Up</a></li>
                 </>
               )}
@@ -69,35 +71,36 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className="top-nav-box">
+      <div className="top-nav-box" style={{backgroundColor:'black',color:'greenyellow'}}>
         <div className="top-nav-box1">
           <div className="icon">
-            <a href="/"><img src={icon} className="icon-img" alt="" /></a>
+            <a href="/"><img src={mr_dewsis} className="icon-img" alt="" /></a>
           </div>
           <div className="search-bar">
-            <div className="location-search search-box">
+            {/* <p style={{textAlign:'center'}}> <span style={{visibility:'hidden'}}>helllooooo</span>Enjoy the FRESH BITE</p> */}
+            {/* <div className="location-search search-box">
               <input type="search" className="search location-search-input" name="location-search" placeholder="Jaipur" />
               <img src={locationIcon} alt="" className="search-icon icon-svg" />
             </div>
             <div className="food-search search-box">
               <input type="search" className="search search-input" name="search-bar" placeholder="Hungry !" />
               <img src={searchIcon} alt="" className="search-icon icon-svg" />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="nav-right-menu">
         <div className="shopping-cart-box btn-box border-right">
             <a href="/about-us" className='anchorTag'><img src={AboutIcon} alt="" className="icon-svg btn-icon" />
-              <p className='my-2'>About</p></a>
+              <p className='my-2' style={{color:'greenyellow'}}>About</p></a>
           </div>
           <div className="discount-box btn-box border-right">
             <a href="/menu" className='anchorTag'><img src={discountIcon} alt="" className="icon-svg btn-icon" />
-              <p className='my-2'>Deals</p></a>
+              <p className='my-2' style={{color:'greenyellow'}}>Deals</p></a>
           </div>
           <div className="shopping-cart-box btn-box border-right shopping-cart-box-float">
             <a href="/cart" className='anchorTag'><img src={cartIcon} alt="" className="icon-svg btn-icon" />
             <p className='cart-text'>{size}</p>
-              <p className='my-2'>Cart</p></a>
+              <p className='my-2' style={{color:'greenyellow'}}>Cart</p></a>
           </div>
           <div className="sign-in-box btn-box">
             {user ? (
