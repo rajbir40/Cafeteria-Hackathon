@@ -38,7 +38,7 @@ function Navbar() {
 
   return (
     <header className="top-nav">
-      <div className="small-device-menu" style={{backgroundColor:'black'}}>
+      <div className="small-device-menu" style={{backgroundColor: 'grey'}}>
         <div className="menu-top">
           <div className={`menu-icon-box ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
             <label className={`menu-line menu-line1 ${menuOpen ? 'menu-close1' : ''}`}></label>
@@ -120,7 +120,7 @@ function Navbar() {
               </div>
             ) : (
               <a href="/sign-in" className='anchorTag'><img src={signInIcon} alt="" className="icon-svg btn-icon" />
-                <p className='my-2'>Sign In</p></a>
+                <p className='my-2' style={{color:'greenyellow'}}>Sign In</p></a>
             )}
           </div>
         </div>

@@ -64,7 +64,7 @@ function App() {
                   element={<Info item={item} />} 
                 />
             )}
-
+{/* hello */}
             <Route path="*" element={<ErrorPage />} />
           </Routes>
           <Footer />
