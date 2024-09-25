@@ -137,8 +137,9 @@
   
   .icon-img {
     cursor: pointer;
-    height: 80px;
+    height: 60px;
     margin-right: 25px;
+    margin-top: 10px;
   }
   
   .search-box {

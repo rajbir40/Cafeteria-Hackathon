@@ -73,8 +73,8 @@ function HomePage() {
             </div>
           </div>
           <div className="right">
-            <h1>India's Largest</h1>
-            <h2>Dhakad Meals Brand</h2>
+            <h1>The Fresh Bite</h1>
+            {/* <h2>The Fresh Bite</h2> */}
             <p>Irresistible meals in</p>
             <p>All-in-1 meals, Biryanis, Curries, Parathas, Desserts & more delivered piping hot.</p>
           </div>
