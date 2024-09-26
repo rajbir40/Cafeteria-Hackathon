@@ -10,6 +10,7 @@ const { CheckforAuthCookie } = require("./middlewares/auth");
 const router = require("./routes/user");
 const itemRouter = require("./routes/items");
 const reviewRouter = require("./routes/review")
+const updateorder = require("./routes/order")
 const verifyotp = require("./routes/otp")
 
 app.listen(PORT, () => console.log(`Server Running on PORT:${PORT}`));
@@ -29,6 +30,7 @@ app.use("/api/add-new/",itemRouter)
 app.use("/api/review",reviewRouter)
 app.use("/api", router);
 app.use("/api/verify",verifyotp);
+app.use("/api/update",updateorder);
 app.get("/test",(req,res)=>{
   return res.send("testing");
 })
