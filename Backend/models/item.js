@@ -26,7 +26,11 @@ const itemSchema = new mongoose.Schema({
     reviews: [{
         type: mongoose.Schema.Types.ObjectId,
         ref:"Review"
-    }] 
+    }],
+    nutrients: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Nutrients"
+    }
 });
 
 const Item = mongoose.model('item', itemSchema);

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Table() {
+function Table({Nutrients}) {
   return (
     <div className="border border-gray-300 shadow-sm rounded-lg overflow-hidden max-w-sm mx-auto mt-16">
       <table className="w-full text-sm leading-5">
@@ -19,56 +19,56 @@ function Table() {
             <td className="py-3 px-4 text-left font-medium text-gray-600">
               Calories
             </td>
-            <td className="py-3 px-4 text-left">240</td>
+            <td className="py-3 px-4 text-left">{
+              Nutrients ? (<>
+              {Nutrients.calories}
+              </>) : (<>No Data Available</>)
+              }</td>
           </tr>
           <tr className="bg-gray-50">
             <td className="py-3 px-4 text-left font-medium text-gray-600">
               Total Fat
             </td>
-            <td className="py-3 px-4 text-left">12g</td>
+            <td className="py-3 px-4 text-left">{
+              Nutrients ? (<>
+              {Nutrients.fat}
+              </>) : (<>No Data Available</>)
+              }</td>
           </tr>
-          <tr>
-            <td className="py-3 px-4 text-left font-medium text-gray-600 pl-8">
-              Saturated Fat
-            </td>
-            <td className="py-3 px-4 text-left">3.5g</td>
-          </tr>
-          <tr className="bg-gray-50">
-            <td className="py-3 px-4 text-left font-medium text-gray-600 pl-8">
-              Trans Fat
-            </td>
-            <td className="py-3 px-4 text-left">0g</td>
-          </tr>
+          
+          
           <tr>
             <td className="py-3 px-4 text-left font-medium text-gray-600">
               Cholesterol
             </td>
-            <td className="py-3 px-4 text-left">45mg</td>
+            <td className="py-3 px-4 text-left">{
+              Nutrients ? (<>
+              {Nutrients.cholestrol}
+              </>) : (<>No Data Available</>)
+              }</td>
           </tr>
-          <tr className="bg-gray-50">
-            <td className="py-3 px-4 text-left font-medium text-gray-600">
-              Sodium
-            </td>
-            <td className="py-3 px-4 text-left">430mg</td>
-          </tr>
+          
           <tr>
             <td className="py-3 px-4 text-left font-medium text-gray-600">
               Total Carbohydrate
             </td>
-            <td className="py-3 px-4 text-left">19g</td>
+            <td className="py-3 px-4 text-left">{
+              Nutrients ? (<>
+              {Nutrients.carbohydrates}
+              </>) : (<>No Data Available</>)
+              }</td>
           </tr>
           
-          <tr>
-            <td className="py-3 px-4 text-left font-medium text-gray-600 pl-8">
-              Sugars
-            </td>
-            <td className="py-3 px-4 text-left">4g</td>
-          </tr>
+          
           <tr className="bg-gray-50">
             <td className="py-3 px-4 text-left font-medium text-gray-600">
               Protein
             </td>
-            <td className="py-3 px-4 text-left">22g</td>
+            <td className="py-3 px-4 text-left">{
+              Nutrients ? (<>
+              {Nutrients.protein}
+              </>) : (<>No Data Available</>)
+              }</td>
           </tr>
         </tbody>
       </table>
