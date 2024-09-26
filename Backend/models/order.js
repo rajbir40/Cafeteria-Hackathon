@@ -35,6 +35,10 @@ const orderSchema = new mongoose.Schema({
         default: "Order placed",  
         enum: ["Order placed", "Being prepared", "Ready for pickup", "Completed"],  
     },
+    preparing:{
+        type:Boolean,
+        required:false
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

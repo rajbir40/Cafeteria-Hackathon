@@ -11,14 +11,14 @@ function AboutSection() {
                 <div className="container cont-about">
                     <div className="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
                         <div className="col-12 col-lg-6 col-xl-5">
-                            <img className="img-fluid rounded" loading="lazy" src={dewsis_about_us} alt="About Foodie" style={{marginLeft:'60px', height:'40vh'}}/>
+                            <img className="img-fluid rounded" loading="lazy" src={dewsis_about_us} alt="About Mr. dewsis" style={{marginLeft:'60px', height:'40vh'}}/>
                         </div>
                         <div className="col-12 col-lg-6 col-xl-7">
                             <div className="row justify-content-xl-center">
                                 <div className="col-12 col-xl-11">
                                     <h2 className="h1 mb-3">Who Are We?</h2>
-                                    <p className="lead fs-4 text-secondary mb-3">We are Foodie, dedicated to providing the best food ordering experience. Our mission is to deliver delicious meals to your doorstep.</p>
-                                    <p className="mb-5">At Foodie, we believe in quality ingredients and exceptional service. Our chefs craft each dish with care, ensuring that every bite is a delight. Join us in our culinary journey and experience the joy of great food.</p>
+                                    <p className="lead fs-4 text-secondary mb-3">We are Mr. Dewsis, dedicated to providing the best food ordering experience. Our mission is to deliver delicious meals to your doorstep.</p>
+                                    <p className="mb-5">At Mr. Dewsis, we believe in quality ingredients and exceptional service. Our chefs craft each dish with care, ensuring that every bite is a delight. Join us in our culinary journey and experience the joy of great food.</p>
                                     <div className="row gy-4 gy-md-0 gx-xxl-5X">
                                         <div className="col-12 col-md-6">
                                             <div className="d-flex">
@@ -29,7 +29,7 @@ function AboutSection() {
                                                 </div>
                                                 <div>
                                                     <h4 className="mb-3">Quality Ingredients</h4>
-                                                    <p className="text-secondary mb-0">At Foodie, we source only the freshest ingredients to create mouthwatering dishes.</p>
+                                                    <p className="text-secondary mb-0">At Mr. Dewsis, we source only the freshest ingredients to create mouthwatering dishes.</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -5,6 +5,10 @@ const crypto = require("crypto");
 const express = require("express");
 
 const router = express.Router();
+const generateOTP = () => {
+    return crypto.randomInt(100000, 999999).toString();
+};
+
 
     router.post("/order/:Id/status",async (req,res) => {
 

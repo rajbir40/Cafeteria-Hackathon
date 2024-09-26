@@ -15,7 +15,7 @@
     position: sticky;
     top: 110px;
     height: 90vh;
-    overflow-y: hidden;
+    overflow-y: auto;
     flex-direction: column;
     width: 350px;
     border-right: 1px solid grey;

@@ -14,6 +14,7 @@ import ErrorPage from './components/Error/error';
 import AdminDashboard from './components/Admin/AdminPage';
 import AboutUs from './components/About-Us/aboutpage';
 import Info from './components/Nut_N_Rev/Info';
+import OtpVerify from './components/Otp_verify/Otp_verify.jsx';
 import axios from 'axios';
 import Navbarr from './components/NavBar/Navbarr';
 
@@ -21,26 +22,46 @@ const serverURL = 'http://localhost:5000';
 
 function App() {
   const [Items, setItems] = useState([]);
+  const [Orders, setOrders] = useState([]);
 
   useEffect(() => {
     const fetchItemCategories = async () => {
       try {
         const response = await axios.get(`${serverURL}/api/add-new/items`);
-        
         setItems(response.data);
       } catch (error) {
         console.error('Error fetching item categories:', error);
       }
     };
 
-    fetchItemCategories();
-  }, []);
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch(`${serverURL}/api/orders`);
+        const data = await response.json();
+        setOrders(data);
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
 
-  if(!Items){
+
+    fetchItemCategories();
+    fetchOrders();
+  }, []);
+  if (!Orders) {
     return <div>Loading...</div>
   }
 
+  // Handle empty states in the mapping logic below
+  if (!Items || !Orders) {
+    
+    return <div>Loading...</div>;
+  }
+
   const items = Items || [];
+  const orders = Orders || [];
+
+
   return (
     <CartProvider>
       <Router>
@@ -60,12 +81,21 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
 
             {items.map((item) =>
-                <Route
-                  key={item._id}
-                  path={`/info/${item._id}`}
-                  element={<Info item={item} />} 
-                />
+              <Route
+                key={item._id}
+                path={`/info/${item._id}`}
+                element={<Info item={item} />}
+              />
             )}
+
+            {orders.map((order) => (
+              <Route
+                key={order._id}
+                path={`/verify_otp/${order._id}`}
+                element={<OtpVerify order={order} />}
+              />
+            ))}
+
 
             <Route path="*" element={<ErrorPage />} />
           </Routes>

@@ -1,6 +1,8 @@
 import React from 'react';
+import { useUser } from '../userContext';
 
 const OrderConfirmation = ({ orderDetails, orderId }) => {
+  const {user}= useUser();
   return (
     <div className="card mb-4">
       <div className="card-header">
@@ -18,6 +20,8 @@ const OrderConfirmation = ({ orderDetails, orderId }) => {
         </ul>
         <p>Your Order ID(s): {orderId}</p>
         <p>You will receive your order confirmation shortly. Please keep this information for your records.</p>
+        <p>Your OTP has been sent to your mail {user.email}</p>
+        <a href={`/verify_otp/${orderId}`}><p>Click here to go to verify page</p></a>
       </div>
     </div>
   );

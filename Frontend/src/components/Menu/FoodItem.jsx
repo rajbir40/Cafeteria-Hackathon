@@ -27,7 +27,7 @@ const FoodItem = ({ item }) => {
 
   return (
     <div className="item-card">
-      <img src={item_src} alt="" className="item-image size-72" />
+      <img src={item_src} alt="" className="item-image size-60 max-w-72 min-w-50 m-auto" />
       <div className="card-box">
         <div className="item-title">
           <img src={VegIcon} alt="" className={`veg-nonveg ${foodTypeClass}`} />
