@@ -1,7 +1,9 @@
 const express = require("express");
+const nodemailer = require("nodemailer");
 const router = express.Router();
 const USER = require("../models/user");
-const {ORDER} = require("../models/order");
+const crypto = require("crypto");
+const ORDER = require("../models/order");
 
 const { CheckforAuthCookie } = require("../middlewares/auth");
 const { validateToken, generateTokenForUser } = require("../services/auth");
@@ -68,6 +70,10 @@ router.post("/user/delete", async (req, res) => {
   }
 })
 
+const generateOTP = () => {
+  return crypto.randomInt(100000, 999999).toString();
+}; 
+
 router.post("/user/add-order", async (req, res) => {
 
   const { name, price, delivery_address, quantity, image , payment_method} = req.body;
@@ -98,7 +104,33 @@ router.post("/user/add-order", async (req, res) => {
     });
 
     user.RecentOrders.push(order._id);
-    await user.save();
+
+    // Generate OTP 
+    const otp = generateOTP();
+    order.otp = otp;
+    await order.save();
+
+    
+    
+    const transporter = nodemailer.createTransport({
+        service:'gmail',
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, // true for port 465, false for other ports
+        auth: {
+            user: "mahakumbhlostfound@gmail.com", // Your email
+            pass: "oevg lizk taxf hkrj", // Your email's app-specific password
+        },
+    });
+
+    const mailOptions = {
+        from: 'mahakumbhlostfound@gmail.com', // Replace with your email
+        to: user.email, // User's email
+        subject: 'Your OTP for Order Confirmation',
+        text: `Your OTP for confirming your order is ${otp}.`,
+    };
+    
+    await transporter.sendMail(mailOptions);
 
     return res.status(201).json({ message: "Order added successfully", order });
   } catch (err) {
