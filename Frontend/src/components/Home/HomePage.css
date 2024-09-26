@@ -19,7 +19,7 @@
     justify-content: center;
     padding-top: 5%;
     padding-bottom: 5%;
-    background-image: linear-gradient(to bottom, rgb(249, 183, 61, 0.7), rgb(249, 183, 61, 0.60), rgb(249, 183, 61, 0.53), rgb(249, 183, 61, 0.45));
+    background-image: linear-gradient(to bottom, rgba(72, 241, 16, 0.7), rgba(52, 204, 10, 0.6), rgba(100, 238, 1, 0.53), rgba(141, 254, 21, 0.45));
 }
 
 .div2 {
@@ -67,10 +67,10 @@
 }
 
 .div2 .left .card .heading i {
-    background-color: rgba(248, 181, 58, 0.5);
+    background-color: rgba(165, 245, 108, 0.5);
     padding: 5px;
     border-radius: 100px;
-    color: rgb(241, 161, 13);
+    color: #248D27;
     font-size: 35px;
 }
 
@@ -102,7 +102,7 @@
 
 .div2 .right h1 {
     font-size: 60px;
-    color: #FFA700;
+    color: #248D27;
     margin: 0px;
 }
 

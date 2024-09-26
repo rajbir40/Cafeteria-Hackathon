@@ -11,6 +11,8 @@ import { useUser } from '../userContext';
 import { useCookies } from 'react-cookie';
 import { CartContext } from '../Cart/CartContext';
 import AboutIcon from "../../assets/icons8-about.svg"
+import mr_dewsis from "../../assets/mr_dewsis.png";
+import dewsis_small from "../../assets/dewsis_small.png";
 
 function Navbar() {
   const { user, updateUser } = useUser();
@@ -43,7 +45,7 @@ function Navbar() {
             <label className={`menu-line menu-line2 ${menuOpen ? 'menu-close2' : ''}`}></label>
             <label className={`menu-line menu-line3 ${menuOpen ? 'menu-close3' : ''}`}></label>
           </div>
-          <a href="/"><img className="icon-img" src={icon} alt="" /></a>
+          <a href="/"><img className="icon-img" src={dewsis_small} alt="" /></a>
         </div>
         <div className={`menu-content ${menuOpen ? 'active' : ''}`}>
           <div className="menu-ol">
@@ -72,18 +74,9 @@ function Navbar() {
       <div className="top-nav-box">
         <div className="top-nav-box1">
           <div className="icon">
-            <a href="/"><img src={icon} className="icon-img" alt="" /></a>
+            <a href="/"><img src={mr_dewsis} className="icon-img" alt="" /></a>
           </div>
-          <div className="search-bar">
-            <div className="location-search search-box">
-              <input type="search" className="search location-search-input" name="location-search" placeholder="Jaipur" />
-              <img src={locationIcon} alt="" className="search-icon icon-svg" />
-            </div>
-            <div className="food-search search-box">
-              <input type="search" className="search search-input" name="search-bar" placeholder="Hungry !" />
-              <img src={searchIcon} alt="" className="search-icon icon-svg" />
-            </div>
-          </div>
+          
         </div>
         <div className="nav-right-menu">
         <div className="shopping-cart-box btn-box border-right">
@@ -92,7 +85,7 @@ function Navbar() {
           </div>
           <div className="discount-box btn-box border-right">
             <a href="/menu" className='anchorTag'><img src={discountIcon} alt="" className="icon-svg btn-icon" />
-              <p className='my-2'>Deals</p></a>
+              <p className='my-2'>Menu</p></a>
           </div>
           <div className="shopping-cart-box btn-box border-right shopping-cart-box-float">
             <a href="/cart" className='anchorTag'><img src={cartIcon} alt="" className="icon-svg btn-icon" />

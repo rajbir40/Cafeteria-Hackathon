@@ -52,7 +52,7 @@ function App() {
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/cart" element={<ShoppingCart />} />
-
+            
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/add-items" element={<AddItem />} />
             <Route path="/about-us" element={<AboutUs />} />
