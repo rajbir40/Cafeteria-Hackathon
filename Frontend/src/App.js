@@ -15,6 +15,7 @@ import AdminDashboard from './components/Admin/AdminPage';
 import AboutUs from './components/About-Us/aboutpage';
 import Info from './components/Nut_N_Rev/Info';
 import axios from 'axios';
+import Navbarr from './components/NavBar/Navbarr';
 
 const serverURL = 'http://localhost:5000';
 
@@ -44,7 +45,8 @@ function App() {
     <CartProvider>
       <Router>
         <div className="main-body">
-          <NavBar />
+          {/* <NavBar /> */}
+          <Navbarr/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/menu" element={<MenuPage />} />
