@@ -5,6 +5,7 @@ import { useUser } from '../userContext';
 import { useCookies } from 'react-cookie';
 import { CartContext } from '../Cart/CartContext';
 import mr_dewsis from "../../assets/mr_dewsis.png";
+import dewsis_small from "../../assets/dewsis_small.png";
 
 function Navbarr() {
 
@@ -38,8 +39,9 @@ function Navbarr() {
       <div className="flex-1 md:flex md:items-center md:gap-12">
         <a className="block text-teal-600" href="/">
           <span className="sr-only">Home</span>
-          <img className="h-8 min-w-32" src={mr_dewsis}/>
 
+          <img className="h-8 min-h-8 min-w-28"   src={mr_dewsis}/>
+      
         </a>
       </div>
 
