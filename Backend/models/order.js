@@ -25,6 +25,11 @@ const orderSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    otp:{
+        type:String,
+        required:false,
+        default:null,
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -34,7 +39,4 @@ const orderSchema = new mongoose.Schema({
 
 const ORDER = mongoose.model("Order", orderSchema);
 
-module.exports = {
-    ORDER,
-    orderSchema,
-};
+module.exports = ORDER;

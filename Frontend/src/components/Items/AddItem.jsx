@@ -8,6 +8,10 @@ const AddItemForm = ({ categories, onAddItem }) => {
   const [offer, setOffer] = useState('');
   const [image, setImage] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [protein,setProtein] = useState('NA');
+  const [carbs,setCarbs] = useState('NA');
+  const [fat,setFat] = useState('NA');
+  const [cholestrol,setCholestrol] = useState('NA');
   const handleSubmit = (e) => {
     e.preventDefault();
     const newItem = {
@@ -64,6 +68,22 @@ const AddItemForm = ({ categories, onAddItem }) => {
             <option key={category._id} value={category._id}>{category.category_title}</option>
           ))}
         </select>
+      </div>
+      <div className="form-group">
+        <label>Protein:</label>
+        <input type="text" value={protein} onChange={(e) => setProtein(e.target.value)} />
+      </div>
+      <div className="form-group">
+        <label>Fat:</label>
+        <input type="text" value={fat} onChange={(e) => setFat(e.target.value)} />
+      </div>
+      <div className="form-group">
+        <label>Carbohydrates:</label>
+        <input type="text" value={carbs} onChange={(e) => setCarbs(e.target.value)} />
+      </div>
+      <div className="form-group">
+        <label>Cholesterol:</label>
+        <input type="text" value={cholestrol} onChange={(e) => setCholestrol(e.target.value)} />
       </div>
       <button type="submit" className="btn-submit">Add Item</button>
     </form>
