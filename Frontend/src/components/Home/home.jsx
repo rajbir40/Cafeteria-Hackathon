@@ -22,7 +22,6 @@ import food9 from './image/food9.jpg';
 import food10 from './image/food10.jpg';
 import food11 from './image/food11.jpg';
 import food12 from './image/food12.jpg';
-import veg_fried_rice from './image/veg_fried_rice.jpeg';
 
 function HomePage() {
   
@@ -116,7 +115,7 @@ function HomePage() {
           <img src={food10} height="100%" width="100%" alt="food10" />
         </a>
         <a href="/menu" className="images image11">
-          <img src={veg_fried_rice} height="100%" width="100%" alt="food11" />
+          <img src={food11} height="100%" width="100%" alt="food11" />
         </a>
         <a href="/menu" className="images image12">
           <img src={food12} height="100%" width="100%" alt="food12" />
