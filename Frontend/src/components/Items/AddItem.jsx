@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
+// import { set } from 'mongoose';
 
 const AddItemForm = ({ categories, onAddItem }) => {
   const [title, setTitle] = useState('');
@@ -9,6 +10,7 @@ const AddItemForm = ({ categories, onAddItem }) => {
   const [image, setImage] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [protein,setProtein] = useState('NA');
+  const [calories,setCalories] = useState('NA');
   const [carbs,setCarbs] = useState('NA');
   const [fat,setFat] = useState('NA');
   const [cholestrol,setCholestrol] = useState('NA');
@@ -19,7 +21,12 @@ const AddItemForm = ({ categories, onAddItem }) => {
       item_type: type,
       item_price: price,
       item_offer: offer,
-      item_src: image
+      item_src: image,
+      calories: calories,
+      protein: protein,
+      carbohydrates: carbs,
+      fat: fat,
+      cholestrol:cholestrol
     };
     if (selectedCategory) {
       onAddItem(selectedCategory, newItem);
@@ -30,6 +37,10 @@ const AddItemForm = ({ categories, onAddItem }) => {
       setOffer('');
       setImage('');
       setSelectedCategory('');
+      setProtein('NA');
+      setCarbs('NA');
+      setFat('NA');
+      setCholestrol('NA');
     } else {
       console.error('Please select a category.');
     }
@@ -72,6 +83,10 @@ const AddItemForm = ({ categories, onAddItem }) => {
       <div className="form-group">
         <label>Protein:</label>
         <input type="text" value={protein} onChange={(e) => setProtein(e.target.value)} />
+      </div>
+      <div className="form-group">
+        <label>Calories:</label>
+        <input type="text" value={calories} onChange={(e) => setCalories(e.target.value)} />
       </div>
       <div className="form-group">
         <label>Fat:</label>
