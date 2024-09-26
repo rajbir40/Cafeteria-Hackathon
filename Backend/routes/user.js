@@ -104,7 +104,7 @@ router.post("/user/add-order", async (req, res) => {
     });
 
     user.RecentOrders.push(order._id);
-
+    user.save();
     // Generate OTP 
     const otp = generateOTP();
     order.otp = otp;
