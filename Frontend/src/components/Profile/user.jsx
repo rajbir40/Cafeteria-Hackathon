@@ -17,14 +17,16 @@ function UserProfile() {
   });
   const [Rewform,setForm] = useState(false);
   const [editMode, setEditMode] = useState(false);
-  const [review,setReview] = useState("")
+  const [review,setReview] = useState("");
+
+  const [b2,setB2] = useState(false);
   const [updatedUserInfo, setUpdatedUserInfo] = useState({
     _id: '',
     fullName: '',
     email: '',
     mobile: '',
   });
-
+  const [message,setMessage] = useState("");
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const { clearCart } = useContext(CartContext);
 
@@ -64,7 +66,7 @@ function UserProfile() {
 
   useEffect(() => {
     fetchUserData();
-  }, []);
+  }, [cookies]);
 
   const handleEdit = () => {
     setEditMode(true);
@@ -105,14 +107,26 @@ function UserProfile() {
   };
 
   const handleReviewForm = () => {
-    console.log("form");
+    // console.log("form");
     setForm(!Rewform);
   }
 
   const handleReview = async (e,_id) =>{
+    setB2(true);
     e.preventDefault();
+    if(!review.length){
+      return;
+    }
     try{
-      const res = await axios.post(`http://localhost:5000/api/review/item/${_id}/review` , {user:user,comment:review})
+      console.log("en")
+      const res = await axios.post(`http://localhost:5000/api/review/item/${_id}/review` , {user:user._id,comment:review});
+      if(res.status==201){
+        console.log("success");
+        setReview("");
+        setForm(false);
+        setMessage("Thanks For Your Review")
+        setB2(false);
+      }
     } catch(error){
       console.error(error);
     }
@@ -244,7 +258,7 @@ function UserProfile() {
               <p>No Recent Orders</p>
             ) : (
               user.RecentOrders.map((order, index) => (
-                <div className="card mb-3" key={index}>
+                <div className="card mb-3 p-2" key={index}>
                   <div className="row no-gutters">
                     <div className="col-md-4" style={{ alignSelf: "center" }}>
                       <img src={order.image} className="card-img" alt="Product" />
@@ -281,17 +295,19 @@ function UserProfile() {
                     </div>
                         {order.status == "Delivered" ? (
                           <>
-                          <button onClick={handleReviewForm} type="button" className='btn btn-danger mt-5 m-auto max-w-32 text-center'>Add Review</button>
+                          <button onClick={handleReviewForm} type="button" className='btn btn-danger mt-5 m-auto max-w-32 text-center'>{Rewform ? ("Cancel"):("Add Review")}</button>
                           {Rewform ? (
                             <>
-                            <form onSubmit={handleReview(order.item._id)}>
+                            
+                            <form onSubmit={(e)=>handleReview(e,order.item)}>
                               <textarea name="textarea" value={review} onChange={(e)=>{setReview(e.target.value)}} id="text"  class=" h-20 w-full resize-none rounded-md border border-slate-300 p-3 my-2"></textarea>
-                              <button type='submit' className='btn btn-danger m-auto mt-3'>Submit</button>
+                              <button type='submit' disabled={b2} className='btn btn-danger m-auto mt-3'>{b2 ? ("Submitting"):("Submit")}</button>
                             </form>
                             </>
                           ):(
                             <></>
                           )}
+                          <p className='text-center text-red-400'>{message}</p>
                           </>
                         ):(<></>)}
                   </div>

@@ -7,7 +7,7 @@ import Comments from './Comments'
 function Info({item}) {
   // console.log(item)
   return (
-    <div>
+    <div className='my-4'>
       <Nutrients item={item}/>
       <Comments item = {item}/>
     </div>
