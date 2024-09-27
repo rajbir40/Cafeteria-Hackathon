@@ -117,7 +117,7 @@ router.get('/items', async (req, res) => {
   try {
     const items = await Item.find().populate({
       path: 'reviews',
-      select: 'user comment', 
+      select: 'user comment createdAt', 
       populate: {
         path: 'user',  // If each review references a user, you can populate that too
         select: 'fullName email'  // Populate fields from the User schema

@@ -24,15 +24,7 @@ function Reviews({ item }) {
                 <h3 className="text-lg font-bold">{comment.user.fullName}</h3>
                 <p className="text-gray-700 text-sm mb-2">
                   Posted on{" "}
-                  {/* Parse and format the createdAt date */}
-                  {new Date(comment.createdAt).toLocaleString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                    hour: "numeric",
-                    minute: "numeric",
-                    hour12: true,
-                  })}
+                  {new Date(comment.createdAt).toLocaleDateString()}
                 </p>
                 <p className="text-gray-700">{comment.comment}</p>
               </div>
