@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddItemImg from "../../assets/add-items.svg";
 import { useUser } from "../userContext";
-
+import ErrorPage from "../Error/error"
 // const serverURL = "http://192.168.54.63:5000"
 const serverURL = "http://localhost:5000";
 
@@ -9,7 +9,9 @@ function AdminDashboard() {
   const [users, setUsers] = useState([]);
   const [orders, setOrders] = useState([]);
   const [showPreparingOrders, setShowPreparingOrders] = useState(false);
-  const [showTotalOrders, setShowTotalOrders] = useState(false); // Added state for total orders
+  const [showTotalOrders, setShowTotalOrders] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [selectedStatus, setSelectedStatus] = useState({});
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -46,11 +48,13 @@ function AdminDashboard() {
     fetchOrders();
   }, []);
 
-  const totalEarnings = orders.length > 0 ? orders.reduce((total, order) => {
-    return total + parseFloat(order.price) * parseInt(order.quantity);
-  }, 0) : 0;
+  const totalEarnings = orders.length > 0
+    ? orders.reduce((total, order) => {
+        return total + parseFloat(order.price) * parseInt(order.quantity);
+      }, 0)
+    : 0;
 
-  const preparingOrders = orders.filter(order => order.preparing === true);
+  const preparingOrders = orders.filter((order) => order.preparing === true);
   const { user } = useUser();
 
   const handleShowPreparingOrders = () => {
@@ -59,8 +63,37 @@ function AdminDashboard() {
   };
 
   const handleShowTotalOrders = () => {
-    setShowTotalOrders(true); // Toggle the state for showing all orders
+    setShowTotalOrders(true);
     setShowPreparingOrders(false);
+  };
+
+  const toggleDropdown = (orderId) => {
+    setOpenDropdown((prevOrderId) => (prevOrderId === orderId ? null : orderId));
+  };
+
+  const handleStatusChange = async (orderId, status) => {
+    try {
+      const response = await fetch(`${serverURL}/api/update/order/${orderId}/status`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ newstatus: status }),
+      });
+
+      if (response.ok) {
+        const updatedOrders = orders.map((order) =>
+          order._id === orderId ? { ...order, status } : order
+        );
+        setOrders(updatedOrders);
+        setSelectedStatus({ ...selectedStatus, [orderId]: status });
+        console.log("Order status updated to:", status);
+      } else {
+        console.error("Failed to update order status");
+      }
+    } catch (error) {
+      console.error("Error updating order status:", error);
+    }
   };
 
   return (
@@ -70,15 +103,9 @@ function AdminDashboard() {
           <div id="wrapper">
             <div id="content-wrapper" className="d-flex flex-column">
               <div id="content">
-                <div
-                  className="container-fluid"
-                  style={{ display: "contents" }}
-                >
+                <div className="container-fluid" style={{ display: "contents" }}>
                   <div className="d-sm-flex align-items-center justify-content-center mb-4">
-                    <h1
-                      className="h3 mb-0 text-gray-800 "
-                      style={{ textAlign: "center" }}
-                    >
+                    <h1 className="h3 mb-0 text-gray-800" style={{ textAlign: "center" }}>
                       Dashboard
                     </h1>
                   </div>
@@ -107,10 +134,10 @@ function AdminDashboard() {
 
                     {/* Total Orders Card */}
                     <div className="col-xl-3 col-md-6 mb-4">
-                    <div
+                      <div
                         className="card border-left-warning shadow h-100 py-2"
                         onClick={handleShowTotalOrders}
-                        style={{ cursor: "pointer" }} // Makes the div look like a button
+                        style={{ cursor: "pointer" }}
                       >
                         <div className="card-body">
                           <div className="row no-gutters align-items-center">
@@ -135,7 +162,7 @@ function AdminDashboard() {
                       <div
                         className="card border-left-warning shadow h-100 py-2"
                         onClick={handleShowPreparingOrders}
-                        style={{ cursor: "pointer" }} // Makes the div look like a button
+                        style={{ cursor: "pointer" }}
                       >
                         <div className="card-body">
                           <div className="row no-gutters align-items-center">
@@ -180,44 +207,58 @@ function AdminDashboard() {
                                     </div>
                                     <div className="col-md-8">
                                       <div className="card-body">
-                                        <h5 className="card-title">{order.name}</h5>
-                                        {order.user ? (
-                                          <>
-                                            <div className="text-container">
-                                              <h6>User Name:</h6>
-                                              <p>&nbsp;&nbsp;{order.user.fullName}</p>
-                                            </div>
-                                            <div className="text-container">
-                                              <h6>Email:</h6>
-                                              <p>&nbsp;&nbsp;{order.user.email}</p>
-                                            </div>
-                                          </>
-                                        ) : (
-                                          <p>User information not available</p>
-                                        )}
-                                        <div className="text-container">
-                                          <h6>Price:</h6>
-                                          <p>&nbsp;&nbsp;₹{order.price}</p>
+                                        <div className="flex justify-between">
+                                          <h5 className="card-title">{order.name}</h5>
+                                          {/* Dropdown for status change */}
+                                          <div className="relative inline-block text-left">
+                                            <button
+                                              type="button"
+                                              className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+                                              onClick={() => toggleDropdown(order._id)}
+                                            >
+                                              Actions
+                                              <svg
+                                                className="-mr-1 ml-2 h-5 w-5"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                                aria-hidden="true"
+                                              >
+                                                <path
+                                                  fillRule="evenodd"
+                                                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.937a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                  clipRule="evenodd"
+                                                />
+                                              </svg>
+                                            </button>
+
+                                            {openDropdown === order._id && (
+                                              <div className="absolute right-0 z-10 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                                                <div className="py-1">
+                                                  {["Order placed", "Being prepared", "Ready for pickup", "Delivered"].map((status) => (
+                                                    <button
+                                                      key={status}
+                                                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                                                      onClick={() => handleStatusChange(order._id, status)}
+                                                    >
+                                                      {status}
+                                                    </button>
+                                                  ))}
+                                                </div>
+                                              </div>
+                                            )}
+                                          </div>
                                         </div>
-                                        <div className="text-container">
-                                          <h6>Quantity:</h6>
-                                          <p>&nbsp;&nbsp;{order.quantity}</p>
-                                        </div>
-                                        <div className="text-container">
-                                          <h6>Total Price:</h6>
-                                          <p>&nbsp;&nbsp;₹{order.price * order.quantity}</p>
-                                        </div>
-                                        <div className="text-container">
-                                          <h6>Order ID:</h6>
-                                          <p>&nbsp;&nbsp;{order._id}</p>
-                                        </div>
+                                        <p className="card-text">Price: ₹{order.price}</p>
+                                        <p className="card-text">Quantity: {order.quantity}</p>
+                                        <p className="card-text">Status: {selectedStatus[order._id] || order.status}</p>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               ))
                             ) : (
-                              <p>No Preparing Orders Found</p>
+                              <p>No orders are currently preparing.</p>
                             )}
                           </div>
                         </div>
@@ -232,7 +273,7 @@ function AdminDashboard() {
                         <div className="card shadow mb-4">
                           <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                             <h6 className="m-0 font-weight-bold text-primary">
-                              All Orders Overview
+                              Total Orders Overview
                             </h6>
                           </div>
                           <div className="card-body">
@@ -250,51 +291,22 @@ function AdminDashboard() {
                                     <div className="col-md-8">
                                       <div className="card-body">
                                         <h5 className="card-title">{order.name}</h5>
-                                        {order.user ? (
-                                          <>
-                                            <div className="text-container">
-                                              <h6>User Name:</h6>
-                                              <p>&nbsp;&nbsp;{order.user.fullName}</p>
-                                            </div>
-                                            <div className="text-container">
-                                              <h6>Email:</h6>
-                                              <p>&nbsp;&nbsp;{order.user.email}</p>
-                                            </div>
-                                          </>
-                                        ) : (
-                                          <p>User information not available</p>
-                                        )}
-                                        <div className="text-container">
-                                          <h6>Price:</h6>
-                                          <p>&nbsp;&nbsp;₹{order.price}</p>
-                                        </div>
-                                        <div className="text-container">
-                                          <h6>Quantity:</h6>
-                                          <p>&nbsp;&nbsp;{order.quantity}</p>
-                                        </div>
-                                        <div className="text-container">
-                                          <h6>Total Price:</h6>
-                                          <p>&nbsp;&nbsp;₹{order.price * order.quantity}</p>
-                                        </div>
-                                        <div className="text-container">
-                                          <h6>Order ID:</h6>
-                                          <p>&nbsp;&nbsp;{order._id}</p>
-                                        </div>
+                                        <p className="card-text">Price: ₹{order.price}</p>
+                                        <p className="card-text">Quantity: {order.quantity}</p>
+                                        <p className="card-text">Status: {order.status}</p>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               ))
                             ) : (
-                              <p>No Orders Found</p>
+                              <p>No orders found.</p>
                             )}
                           </div>
                         </div>
                       </div>
                     </div>
-                  )}
-
-                  {/* Additional Content */}
+                  )}{/* Additional Content */}
                   <div className="row" style={{ justifyContent: "center" }}>
                     <div className="col-lg-6 mb-4">
                       <div className="card shadow mb-4">
@@ -326,10 +338,7 @@ function AdminDashboard() {
           </div>
         </>
       ) : (
-        <div className="access-forbidden" style={{ height: "80vh" }}>
-          <h3>Access Forbidden</h3>
-          <p>Only Admin can Access this page...</p>
-        </div>
+        <ErrorPage/>
       )}
     </>
   );

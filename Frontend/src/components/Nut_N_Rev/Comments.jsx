@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 function Reviews({ item }) {
   const [reviews, setReviews] = useState([]);
 
+  // Set the reviews from the item prop when it's available
   useEffect(() => {
     if (item && item.reviews) {
       setReviews(item.reviews);
     }
   }, [item]);
-  
-  console.log(reviews);
+
   return (
     <div>
       <div className="bg-gray-100 p-6">
@@ -24,18 +24,15 @@ function Reviews({ item }) {
                 <h3 className="text-lg font-bold">{comment.user.fullName}</h3>
                 <p className="text-gray-700 text-sm mb-2">
                   Posted on{" "}
-                  
-                  {new Date(Date.parse(comment.createdAt)).toLocaleString(
-                    "en-US",
-                    {
-                      month: "long",
-                      day: "numeric",
-                      year: "numeric",
-                      hour: "numeric",
-                      minute: "numeric",
-                      hour12: true,
-                    }
-                  )}
+                  {/* Parse and format the createdAt date */}
+                  {new Date(comment.createdAt).toLocaleString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    hour12: true,
+                  })}
                 </p>
                 <p className="text-gray-700">{comment.comment}</p>
               </div>

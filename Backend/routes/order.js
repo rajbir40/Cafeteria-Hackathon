@@ -15,7 +15,7 @@ const generateOTP = () => {
     const {Id} = req.params;
     const {newstatus} = req.body;
 
-    const validStatuses = ["Order placed", "Being prepared", "Ready for pickup", "Completed"];
+    const validStatuses = ["Order placed", "Being prepared", "Ready for pickup", "Delivered"];
 
     if(!validStatuses.includes(newstatus)){
         return res.status(400).json({message:"invalid status"})

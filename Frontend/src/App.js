@@ -48,9 +48,7 @@ function App() {
     fetchItemCategories();
     fetchOrders();
   }, []);
-  if (!Orders) {
-    return <div>Loading...</div>
-  }
+
 
   // Handle empty states in the mapping logic below
   if (!Items || !Orders) {
@@ -60,7 +58,7 @@ function App() {
 
   const items = Items || [];
   const orders = Orders || [];
-
+  console.log(orders)
 
   return (
     <CartProvider>
@@ -88,7 +86,7 @@ function App() {
               />
             )}
 
-            {orders.map((order) => (
+            {orders.length>0 && orders.map((order) => (
               <Route
                 key={order._id}
                 path={`/verify_otp/${order._id}`}

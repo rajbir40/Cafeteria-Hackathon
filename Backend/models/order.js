@@ -33,7 +33,7 @@ const orderSchema = new mongoose.Schema({
     status: {
         type: String,
         default: "Order placed",  
-        enum: ["Order placed", "Being prepared", "Ready for pickup", "Completed"],  
+        enum: ["Order placed", "Being prepared", "Ready for pickup", "Delivered"],  
     },
     preparing:{
         type:Boolean,
