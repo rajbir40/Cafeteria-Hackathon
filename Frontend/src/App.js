@@ -88,13 +88,14 @@ function App() {
               />
             )}
 
-            {orders.map((order) => (
+            {orders.length>0  && orders.map((order) => (
               <Route
                 key={order._id}
                 path={`/verify_otp/${order._id}`}
                 element={<OtpVerify order={order} />}
               />
             ))}
+            
 
 
             <Route path="*" element={<ErrorPage />} />

@@ -33,7 +33,7 @@ const orderSchema = new mongoose.Schema({
     status: {
         type: String,
         default: "Order placed",  
-        enum: ["Order placed", "Being prepared", "Ready for pickup", "Completed"],  
+        enum: ["Order placed", "Being prepared", "Ready for pickup", "Delivered"],  
     },
     preparing:{
         type:Boolean,
@@ -42,6 +42,11 @@ const orderSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
+        required: true
+    },
+    item: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'item',
         required: true
     }
 },{timestamps:true});

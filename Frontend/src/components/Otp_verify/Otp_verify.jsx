@@ -1,24 +1,32 @@
 import React, { useState} from 'react';
 import { useUser } from '../userContext';
+import axios from 'axios';
+import { Route,useNavigate } from 'react-router-dom';
+
 
 export default function OtpVerify({ order }) {
-  const {otp} = order;
+  const {_id} = order;
   const {user} = useUser();
   const [inotp,setInotp]= useState();
-  
-
+  const [message,setMessage] = useState("");
+  const navigate = useNavigate();
   const handleOtpChange = (e) => {
     setInotp(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (inotp === otp) {
-      window.location.href = '/menu';
-      console.log("OTP is correct.");
-    } else {
-      console.log("Invalid OTP.");
-    }
+    
+      try{
+      const res = await axios.post(`http://localhost:5000/api/verify/${_id}/verifyotp`,{verifyotp:inotp});
+      setMessage("");
+        navigate("/menu")
+      }
+      catch(error){
+        console.log(error);
+        setMessage("Wrong OTP!");
+      }
+    
   };
 
   return (
@@ -31,7 +39,7 @@ export default function OtpVerify({ order }) {
                 <p>Email Verification</p>
               </div>
               <div className="flex flex-row text-sm font-medium text-gray-400">
-                <p>We have sent a code to your email {user.email}</p>
+                <p>We have sent a code to your email {user?.email}</p>
               </div>
             </div>
 
@@ -63,6 +71,7 @@ export default function OtpVerify({ order }) {
               </form>
             </div>
           </div>
+      <p className='m-auto text-red-700'>{message}</p>
         </div>
       </div>
     </>

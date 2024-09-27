@@ -23,6 +23,7 @@ const ShoppingCart = () => {
       name: item.item_title,
       price: item.item_price,
       delivery_address: address,
+      item:item._id,
       quantity: item.quantity,
       image: item.item_src,
       payment_method: paymentMethod, 

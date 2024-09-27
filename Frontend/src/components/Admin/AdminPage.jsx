@@ -37,6 +37,7 @@ function AdminDashboard() {
         });
         const orderData = await response.json();
         setOrders(orderData);
+        // console.log(orderData);
       } catch (error) {
         console.error("Error fetching orders:", error);
       }

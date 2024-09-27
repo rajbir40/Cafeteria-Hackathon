@@ -24,6 +24,8 @@ router.post("/:Id/verifyotp",async (req,res)=>{
         }
         else {
             console.log("otp verified successfully");
+            order.status = "Delivered";
+            await order.save();
             return res.status(200).json({ message: "OTP verified successfully" });
         }
     }

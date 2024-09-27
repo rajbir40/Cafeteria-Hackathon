@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import './style.css';
 import { useCookies } from 'react-cookie';
 import { CartContext } from '../Cart/CartContext';
+import axios from 'axios';
 
 // const serverURL = "http://192.168.54.63:5000"
 const serverURL = "http://localhost:5000"
@@ -14,8 +15,9 @@ function UserProfile() {
     role: '',
     RecentOrders: [],
   });
-
+  const [Rewform,setForm] = useState(false);
   const [editMode, setEditMode] = useState(false);
+  const [review,setReview] = useState("")
   const [updatedUserInfo, setUpdatedUserInfo] = useState({
     _id: '',
     fullName: '',
@@ -101,6 +103,20 @@ function UserProfile() {
       console.error('Error updating user information:', error);
     }
   };
+
+  const handleReviewForm = () => {
+    console.log("form");
+    setForm(!Rewform);
+  }
+
+  const handleReview = async (e,_id) =>{
+    e.preventDefault();
+    try{
+      const res = await axios.post(`http://localhost:5000/api/review/item/${_id}/review` , {user:user,comment:review})
+    } catch(error){
+      console.error(error);
+    }
+  }
 
   const handleDeleteAccount = async () => {
     try {
@@ -256,8 +272,28 @@ function UserProfile() {
                           <h6>Order ID:</h6>
                           <p>&nbsp;&nbsp;{order._id}</p>
                         </div>
+                        <div className="text-container">
+                          <h6>Order Status:</h6>
+                          <p>&nbsp;&nbsp;{order.status}</p>
+                        </div>
+                        
                       </div>
                     </div>
+                        {order.status == "Delivered" ? (
+                          <>
+                          <button onClick={handleReviewForm} type="button" className='btn btn-danger mt-5 m-auto max-w-32 text-center'>Add Review</button>
+                          {Rewform ? (
+                            <>
+                            <form onSubmit={handleReview(order.item._id)}>
+                              <textarea name="textarea" value={review} onChange={(e)=>{setReview(e.target.value)}} id="text"  class=" h-20 w-full resize-none rounded-md border border-slate-300 p-3 my-2"></textarea>
+                              <button type='submit' className='btn btn-danger m-auto mt-3'>Submit</button>
+                            </form>
+                            </>
+                          ):(
+                            <></>
+                          )}
+                          </>
+                        ):(<></>)}
                   </div>
                 </div>
               ))
