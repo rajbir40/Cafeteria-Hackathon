@@ -13,7 +13,7 @@
 .left-body {
     display: flex;
     position: sticky;
-    top: 110px;
+    top:80px;
     height: 90vh;
     overflow-y: auto;
     flex-direction: column;
@@ -54,9 +54,9 @@
 }
 
 .selected-category {
-    color: red;
+    color: rgb(9, 18, 43);
     font-weight: bold;
-    border-left: 3px solid red;
+    border-left: 3px solid rgb(21, 14, 50);
     background-color: rgb(233, 233, 233);
 }
 
@@ -254,7 +254,7 @@
 .cart-size-tag {
     position: fixed;
     color: rgb(255, 255, 255);
-    background-color: #dc3546ba;
+    background-color: #1f1448ba;
     border-radius: 50%;
     bottom: 65px;
     right: 55px;

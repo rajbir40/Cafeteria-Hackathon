@@ -70,6 +70,7 @@ function Nutrients({ item }) {
               {item_title}
             </h2>
             <div className="md:flex-1 px-4">
+              <h2 className="my-4 text-center text-teal-950 text-3xl font-sans">₹{item.item_price}</h2>
               <Table Nutrients={nutrients} />
             </div>
           </div>

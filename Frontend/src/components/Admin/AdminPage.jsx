@@ -39,6 +39,7 @@ function AdminDashboard() {
         });
         const orderData = await response.json();
         setOrders(orderData);
+        // console.log(orderData);
       } catch (error) {
         console.error("Error fetching orders:", error);
       }
@@ -100,7 +101,7 @@ function AdminDashboard() {
     <>
       {user && user.role === "Admin" ? (
         <>
-          <div id="wrapper">
+          <div id="wrapper" >
             <div id="content-wrapper" className="d-flex flex-column">
               <div id="content">
                 <div className="container-fluid" style={{ display: "contents" }}>

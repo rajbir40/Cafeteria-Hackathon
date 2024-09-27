@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import './style.css';
 import { useCookies } from 'react-cookie';
 import { CartContext } from '../Cart/CartContext';
+import axios from 'axios';
 
 // const serverURL = "http://192.168.54.63:5000"
 const serverURL = "http://localhost:5000"
@@ -14,15 +15,18 @@ function UserProfile() {
     role: '',
     RecentOrders: [],
   });
-
+  const [Rewform,setForm] = useState(false);
   const [editMode, setEditMode] = useState(false);
+  const [review,setReview] = useState("");
+
+  const [b2,setB2] = useState(false);
   const [updatedUserInfo, setUpdatedUserInfo] = useState({
     _id: '',
     fullName: '',
     email: '',
     mobile: '',
   });
-
+  const [message,setMessage] = useState("");
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
   const { clearCart } = useContext(CartContext);
 
@@ -62,7 +66,7 @@ function UserProfile() {
 
   useEffect(() => {
     fetchUserData();
-  }, []);
+  }, [cookies]);
 
   const handleEdit = () => {
     setEditMode(true);
@@ -101,6 +105,32 @@ function UserProfile() {
       console.error('Error updating user information:', error);
     }
   };
+
+  const handleReviewForm = () => {
+    // console.log("form");
+    setForm(!Rewform);
+  }
+
+  const handleReview = async (e,_id) =>{
+    setB2(true);
+    e.preventDefault();
+    if(!review.length){
+      return;
+    }
+    try{
+      console.log("en")
+      const res = await axios.post(`http://localhost:5000/api/review/item/${_id}/review` , {user:user._id,comment:review});
+      if(res.status==201){
+        console.log("success");
+        setReview("");
+        setForm(false);
+        setMessage("Thanks For Your Review")
+        setB2(false);
+      }
+    } catch(error){
+      console.error(error);
+    }
+  }
 
   const handleDeleteAccount = async () => {
     try {
@@ -228,7 +258,7 @@ function UserProfile() {
               <p>No Recent Orders</p>
             ) : (
               user.RecentOrders.map((order, index) => (
-                <div className="card mb-3" key={index}>
+                <div className="card mb-3 p-2" key={index}>
                   <div className="row no-gutters">
                     <div className="col-md-4" style={{ alignSelf: "center" }}>
                       <img src={order.image} className="card-img" alt="Product" />
@@ -256,8 +286,30 @@ function UserProfile() {
                           <h6>Order ID:</h6>
                           <p>&nbsp;&nbsp;{order._id}</p>
                         </div>
+                        <div className="text-container">
+                          <h6>Order Status:</h6>
+                          <p>&nbsp;&nbsp;{order.status}</p>
+                        </div>
+                        
                       </div>
                     </div>
+                        {order.status == "Delivered" ? (
+                          <>
+                          <button onClick={handleReviewForm} type="button" className='btn btn-danger mt-5 m-auto max-w-32 text-center'>{Rewform ? ("Cancel"):("Add Review")}</button>
+                          {Rewform ? (
+                            <>
+                            
+                            <form onSubmit={(e)=>handleReview(e,order.item)}>
+                              <textarea name="textarea" value={review} onChange={(e)=>{setReview(e.target.value)}} id="text"  class=" h-20 w-full resize-none rounded-md border border-slate-300 p-3 my-2"></textarea>
+                              <button type='submit' disabled={b2} className='btn btn-danger m-auto mt-3'>{b2 ? ("Submitting"):("Submit")}</button>
+                            </form>
+                            </>
+                          ):(
+                            <></>
+                          )}
+                          <p className='text-center text-red-400'>{message}</p>
+                          </>
+                        ):(<></>)}
                   </div>
                 </div>
               ))

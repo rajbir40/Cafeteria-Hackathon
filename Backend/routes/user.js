@@ -76,7 +76,7 @@ const generateOTP = () => {
 
 router.post("/user/add-order", async (req, res) => {
 
-  const { name, price, delivery_address, quantity, image , payment_method} = req.body;
+  const { name, price, delivery_address, quantity, image , payment_method,item} = req.body;
 
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -100,11 +100,12 @@ router.post("/user/add-order", async (req, res) => {
       quantity,
       image,
       payment_method,
-      user: userId  
+      user: userId  ,
+      item
     });
 
     user.RecentOrders.push(order._id);
-    user.save();
+    await user.save();
     // Generate OTP 
     const otp = generateOTP();
     order.otp = otp;

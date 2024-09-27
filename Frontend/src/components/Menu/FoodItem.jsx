@@ -45,7 +45,7 @@ const FoodItem = ({ item }) => {
               <button className="remove-cart-btn" onClick={handleRemoveFromCart}>Remove</button>
             </div>
           ) : (
-            <button className="purchase-btn" onClick={handleAddToCart}>Add to Cart</button>
+            <button className="purchase-btn" style={{backgroundColor: '#15182F'}} onClick={handleAddToCart}>Add to Cart</button>
           )}
         </div>
         <div className="item-offer">

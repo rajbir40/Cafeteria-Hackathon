@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomePage.css'; 
-
+import Carousel from '../Carousel';
 import video from './image/video.mp4';
 import heartIcon from './image/heart.png';
 import eat34 from './image/eat34.png';
@@ -22,17 +22,17 @@ import food9 from './image/food9.jpg';
 import food10 from './image/food10.jpg';
 import food11 from './image/food11.jpg';
 import food12 from './image/food12.jpg';
-import veg_fried_rice from './image/veg_fried_rice.jpeg';
 
 function HomePage() {
   
   return (
     <div className='container-main'>
-      <div className="video">
+      {/* <div className="video">
         <video height="400px" autoPlay loop muted>
           <source src={video} type="video/mp4" />
         </video>
-      </div>
+      </div> */}
+      <Carousel/>
       <div className="divv2">
         <div className="div2">
           <div className="left">
@@ -116,7 +116,7 @@ function HomePage() {
           <img src={food10} height="100%" width="100%" alt="food10" />
         </a>
         <a href="/menu" className="images image11">
-          <img src={veg_fried_rice} height="100%" width="100%" alt="food11" />
+          <img src={food11} height="100%" width="100%" alt="food11" />
         </a>
         <a href="/menu" className="images image12">
           <img src={food12} height="100%" width="100%" alt="food12" />
@@ -126,7 +126,7 @@ function HomePage() {
         <div className="text">
           <img src={heartIcon} height="60px" width="60px" alt="heart" />
           <div className="font">
-            <h1>
+            <h1 style={{color:'white'}}>
               Over <span>20L+<br /> happy customers</span><br />
               and counting...
             </h1>
@@ -163,7 +163,7 @@ function HomePage() {
             <h1>
               When in<br />
               doubt, <br />
-              <span>Order Dhakad!</span>
+              <span>Order Dewsis!</span>
             </h1>
             <p>
               Too lazy to cook or bored of ghar ka khana? Tired of scrolling through restaurants or stuck on a con-call? Whatever the reason, When In Doubt, Order Desi!

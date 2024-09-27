@@ -4,19 +4,20 @@ import "./style.css"
 import AboutPage from "../../assets/food-delivery2.jpg"
 import ABoutPage2 from "../../assets/food-delivery-concept.jpg"
 import dewsis_about_us from "../../assets/dewsis_about_us.jpeg"
+import about_us_boy from "../../assets/about_us_boy.png"
 function AboutSection() {
     return (
         <>
-            <section className="py-3 py-md-5 py-xl-10">
+            <section className="py-3 py-md-5 py-xl-10 mt-12">
                 <div className="container cont-about">
                     <div className="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
                         <div className="col-12 col-lg-6 col-xl-5">
-                            <img className="img-fluid rounded" loading="lazy" src={dewsis_about_us} alt="About Mr. dewsis" style={{marginLeft:'60px', height:'40vh'}}/>
+                            <img className="img-fluid rounded" loading="lazy" src={about_us_boy} alt="About Mr. dewsis" style={{marginLeft:'60px', height:'40vh'}}/>
                         </div>
                         <div className="col-12 col-lg-6 col-xl-7">
                             <div className="row justify-content-xl-center">
                                 <div className="col-12 col-xl-11">
-                                    <h2 className="h1 mb-3">Who Are We?</h2>
+                                    <h2 className="h1 mb-3" style={{color: '#15182F'}}>Who Are We?</h2>
                                     <p className="lead fs-4 text-secondary mb-3">We are Mr. Dewsis, dedicated to providing the best food ordering experience. Our mission is to deliver delicious meals to your doorstep.</p>
                                     <p className="mb-5">At Mr. Dewsis, we believe in quality ingredients and exceptional service. Our chefs craft each dish with care, ensuring that every bite is a delight. Join us in our culinary journey and experience the joy of great food.</p>
                                     <div className="row gy-4 gy-md-0 gx-xxl-5X">

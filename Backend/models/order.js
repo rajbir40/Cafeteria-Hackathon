@@ -43,6 +43,11 @@ const orderSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
+    },
+    item: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'item',
+        required: true
     }
 },{timestamps:true});
 

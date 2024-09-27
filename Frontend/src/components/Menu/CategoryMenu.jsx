@@ -49,9 +49,9 @@ const CategoryMenu = ({ items }) => {
   }
 
   return (
-    <div className="main-content">
-      <div className="left-body">
-        <h2 className="menu-h2">Menu</h2>
+    <div className="main-content " >
+      <div className="left-body p-4">
+        <h2 className="menu-h2 ">Menu</h2>
         {items.map((category, index) => (
           <CategoryItem
             key={index}

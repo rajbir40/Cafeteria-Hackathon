@@ -12,7 +12,7 @@ function Footer() {
       <div className="footer1">
         <div className="footer1-grid">
           <div className="footer-list">
-            <h4>Foodie</h4>
+            <h4>Mr.Dewsis</h4>
             <p><a href="#">About</a></p>
             <p><a href="#">Help and Support</a></p>
             <p><a href="#">Contact Us</a></p>

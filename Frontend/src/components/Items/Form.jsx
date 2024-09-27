@@ -72,7 +72,7 @@ const MyComponent = () => {
     <div>
       {isAdmin ? (
         <>
-          <h2 className='mt-5 mb-5' style={{textAlign:"center"}}>Add New Category</h2>
+          <h2 className='mt-5 mb-5 ' style={{textAlign:"center"}}>Add New Category</h2>
           <AddCategoryForm onAddCategory={handleAddCategory} />
 
           <h2 className='mt-5 mb-5' style={{textAlign:"center"}}>Add New Item to Category</h2>
