@@ -22,27 +22,33 @@ const serverURL = 'http://localhost:5000';
 
 function App() {
   const [Items, setItems] = useState([]);
-  const [Orders, setOrders] = useState([]); // Initialize Orders as an empty array
+  const [Orders, setOrders] = useState([]);
 
-useEffect(() => {
-  const fetchOrders = async () => {
-    try {
-      const response = await fetch(`${serverURL}/api/orders`);
-      const data = await response.json();
-      console.log('Fetched orders:', data); // Log the response for debugging
-      setOrders(data);
-    } catch (error) {
-      console.error('Error fetching orders:', error);
-    }
-  };
-  
+  useEffect(() => {
+    const fetchItemCategories = async () => {
+      try {
+        const response = await axios.get(`${serverURL}/api/add-new/items`);
+        setItems(response.data);
+      } catch (error) {
+        console.error('Error fetching item categories:', error);
+      }
+    };
 
-  fetchOrders();
-}, []);
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch(`${serverURL}/api/orders`);
+        const data = await response.json();
+        setOrders(data);
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
 
-  if (!Orders) {
-    return <div>Loading...</div>
-  }
+
+    fetchItemCategories();
+    fetchOrders();
+  }, []);
+
 
   // Handle empty states in the mapping logic below
   if (!Items || !Orders) {
@@ -51,9 +57,8 @@ useEffect(() => {
   }
 
   const items = Items || [];
-  const orders = Array.isArray(Orders) ? Orders : [];
-
-
+  const orders = Orders || [];
+  console.log(orders)
 
   return (
     <CartProvider>
@@ -81,14 +86,13 @@ useEffect(() => {
               />
             )}
 
-            {orders.length>0  && orders.map((order) => (
+            {orders.length>0 && orders.map((order) => (
               <Route
                 key={order._id}
                 path={`/verify_otp/${order._id}`}
                 element={<OtpVerify order={order} />}
               />
             ))}
-            
 
 
             <Route path="*" element={<ErrorPage />} />

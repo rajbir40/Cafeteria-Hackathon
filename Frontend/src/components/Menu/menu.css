@@ -13,7 +13,7 @@
 .left-body {
     display: flex;
     position: sticky;
-    top: 110px;
+    top:80px;
     height: 90vh;
     overflow-y: auto;
     flex-direction: column;

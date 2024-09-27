@@ -27,7 +27,7 @@ function Navbarr() {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-[#353A44] shadow-md"> {/* Updated to fixed position */}
+    <div className="sticky top-0 left-0 w-full z-50 bg-[#353A44] shadow-md"> {/* Updated to fixed position */}
       <header>
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
@@ -42,13 +42,13 @@ function Navbarr() {
               <nav aria-label="Global" className="hidden md:block">
                 <ul className="flex items-center gap-6 text-sm">
                   <li>
-                    <a className="transition hover:text-green-300" href="/about-us" style={{ color: '#a5a2a1' }}>About</a>
-                  </li>
-                  <li>
                     <a className="transition hover:text-green-300" href="/menu" style={{ color: '#a5a2a1' }}>Menu</a>
                   </li>
                   <li>
                     <a className="transition hover:text-green-300" href="/cart" style={{ color: '#a5a2a1' }}>Cart</a>
+                  </li>
+                  <li>
+                    <a className="transition hover:text-green-300" href="/about-us" style={{ color: '#a5a2a1' }}>About</a>
                   </li>
                 </ul>
               </nav>

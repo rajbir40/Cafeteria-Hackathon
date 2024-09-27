@@ -68,7 +68,7 @@ function AdminDashboard() {
     <>
       {user && user.role === "Admin" ? (
         <>
-          <div id="wrapper">
+          <div id="wrapper" >
             <div id="content-wrapper" className="d-flex flex-column">
               <div id="content">
                 <div
