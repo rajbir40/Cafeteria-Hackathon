@@ -60,15 +60,14 @@ const Checkout = ({ totalAmount, handlePayment }) => {
               onChange={handlePaymentMethodChange}
             >
               <option value="COD">Cash on Delivery</option>
-              <option value="Pay On Delivery">Pay on Delivery</option>
+              <option value="Pay On Delivery">Pay Now</option>
             </select>
           </div>
           <p><strong>Total Amount: ₹{totalAmount}</strong></p>
           <button
             type="submit"
             className="btn btn-primary"
-            disabled={loading} // Disable button when loading
-          >
+            disabled={loading} style={{backgroundColor: '#15182F'}}>
             {loading ? 'Processing...' : 'Place Order'}
           </button>
         </form>

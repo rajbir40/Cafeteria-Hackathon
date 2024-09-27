@@ -22,32 +22,24 @@ const serverURL = 'http://localhost:5000';
 
 function App() {
   const [Items, setItems] = useState([]);
-  const [Orders, setOrders] = useState([]);
+  const [Orders, setOrders] = useState([]); // Initialize Orders as an empty array
 
-  useEffect(() => {
-    const fetchItemCategories = async () => {
-      try {
-        const response = await axios.get(`${serverURL}/api/add-new/items`);
-        setItems(response.data);
-      } catch (error) {
-        console.error('Error fetching item categories:', error);
-      }
-    };
+useEffect(() => {
+  const fetchOrders = async () => {
+    try {
+      const response = await fetch(`${serverURL}/api/orders`);
+      const data = await response.json();
+      console.log('Fetched orders:', data); // Log the response for debugging
+      setOrders(data);
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    }
+  };
+  
 
-    const fetchOrders = async () => {
-      try {
-        const response = await fetch(`${serverURL}/api/orders`);
-        const data = await response.json();
-        setOrders(data);
-      } catch (error) {
-        console.error('Error fetching orders:', error);
-      }
-    };
+  fetchOrders();
+}, []);
 
-
-    fetchItemCategories();
-    fetchOrders();
-  }, []);
   if (!Orders) {
     return <div>Loading...</div>
   }
@@ -59,7 +51,8 @@ function App() {
   }
 
   const items = Items || [];
-  const orders = Orders || [];
+  const orders = Array.isArray(Orders) ? Orders : [];
+
 
 
   return (

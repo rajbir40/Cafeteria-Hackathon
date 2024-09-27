@@ -74,14 +74,14 @@ const Login2 = () => {
                   required
                 />
                 <button
-                  className={`mt-5 tracking-wide font-semibold bg-green-400 text-white w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none ${
-                    isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                  }`}
+                  className={`mt-5 tracking-wide bg-navy-700 font-semibold text-white w-full py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
                   type="submit"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit'}
                 </button>
+
                 {error && <div className="text-red-500 mt-3">{error}</div>}
               </div>
               <p className="mt-6 text-xs text-gray-600 text-center">

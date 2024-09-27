@@ -63,9 +63,9 @@ const ShoppingCart = () => {
   
 
   return (
-    <div className="container-md">
+    <div className="container-md mt-16">
       <div className="row d-flex justify-content-center my-4">
-        <div className="col-md-8">
+        <div className="col-md-8" style={{marginTop:'inherit'}}>
           <div className="card mb-4">
             <div className="card-header py-3">
               <h5 className="mb-0">Cart - {cartItems.length} items</h5>
@@ -114,7 +114,7 @@ const ShoppingCart = () => {
           )}
         </div>
         {!showCheckout && cartItems.length > 0 && (
-          <div className="col-md-4">
+          <div className="col-md-4" style={{marginTop:'inherit'}}>
             <div className="card mb-4">
               <div className="card-header py-3">
                 <h5 className="mb-0">Summary</h5>
@@ -136,13 +136,13 @@ const ShoppingCart = () => {
                     <span><strong>₹{cartItems.reduce((acc, cartItem) => acc + (cartItem.item_price * cartItem.quantity), 0).toFixed(2)}</strong></span>
                   </li>
                 </ul>
-                <button className="btn btn-primary btn-lg btn-block" onClick={handleGoToCheckout}>Go to Checkout</button>
+                <button className="btn btn-primary btn-lg btn-block"style={{backgroundColor: '#15182F'}} onClick={handleGoToCheckout}>Go to Checkout</button>
               </div>
             </div>
           </div>
         )}
         {showCheckout && !orderPlaced && (
-          <div className="col-md-4">
+          <div className="col-md-4" style={{marginTop:'inherit'}}>
             <Checkout totalAmount={cartItems.reduce((acc, cartItem) => acc + (cartItem.item_price * cartItem.quantity), 0).toFixed(2)} handlePayment={handlePayment} />
           </div>
         )}

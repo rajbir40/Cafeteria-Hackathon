@@ -79,7 +79,7 @@ const Login = () => {
                   />
                 </div>
                 <div className="form-group form-button">
-                  <button type="submit" name="signin" id="signin" className="form-submit" disabled={isSubmitting}>
+                  <button type="submit" name="signin" id="signin" className="form-submit" disabled={isSubmitting} style={{backgroundColor: '#15182F'}}>
                     {isSubmitting ? 'Submitting...' : 'Submit'}
                   </button>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomePage.css'; 
-
+import Carousel from '../Carousel';
 import video from './image/video.mp4';
 import heartIcon from './image/heart.png';
 import eat34 from './image/eat34.png';
@@ -27,11 +27,12 @@ function HomePage() {
   
   return (
     <div className='container-main'>
-      <div className="video">
+      {/* <div className="video">
         <video height="400px" autoPlay loop muted>
           <source src={video} type="video/mp4" />
         </video>
-      </div>
+      </div> */}
+      <Carousel/>
       <div className="divv2">
         <div className="div2">
           <div className="left">
@@ -125,7 +126,7 @@ function HomePage() {
         <div className="text">
           <img src={heartIcon} height="60px" width="60px" alt="heart" />
           <div className="font">
-            <h1>
+            <h1 style={{color:'white'}}>
               Over <span>20L+<br /> happy customers</span><br />
               and counting...
             </h1>
@@ -162,7 +163,7 @@ function HomePage() {
             <h1>
               When in<br />
               doubt, <br />
-              <span>Order Dhakad!</span>
+              <span>Order Dewsis!</span>
             </h1>
             <p>
               Too lazy to cook or bored of ghar ka khana? Tired of scrolling through restaurants or stuck on a con-call? Whatever the reason, When In Doubt, Order Desi!

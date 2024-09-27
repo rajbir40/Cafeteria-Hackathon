@@ -19,7 +19,7 @@
     justify-content: center;
     padding-top: 5%;
     padding-bottom: 5%;
-    background-image: linear-gradient(to bottom, rgba(42, 65, 34, 0.7), rgba(37, 58, 32, 0.6), rgba(46, 78, 22, 0.53), rgba(61, 104, 12, 0.45));
+    background-image: linear-gradient(to bottom, rgb(14, 25, 39), rgba(10, 22, 36, 0.6), rgba(10, 12, 55, 0.4));
 }
 
 .div2 {
@@ -67,10 +67,10 @@
 }
 
 .div2 .left .card .heading i {
-    background-color: rgba(165, 245, 108, 0.5);
+    background-color: rgba(0, 0, 0);
     padding: 5px;
     border-radius: 100px;
-    color: #248D27;
+    color: white;
     font-size: 35px;
 }
 
@@ -102,17 +102,19 @@
 
 .div2 .right h1 {
     font-size: 60px;
-    color: #248D27;
+    color: white;
     margin: 0px;
 }
 
 .div2 .right h2 {
     font-size: 35px;
     padding: 10px 0px;
+    color: white;
 }
 
 .div2 .right p {
     font-size: 20px;
+    color:white;
 }
 
 #star {
@@ -164,7 +166,7 @@
 
 .divv4 {
     display: flex;
-    background-image: linear-gradient(to bottom, rgba(42, 65, 34, 0.7), rgba(37, 58, 32, 0.6), rgba(46, 78, 22, 0.53), rgba(61, 104, 12, 0.45));
+    background-image: linear-gradient(to bottom, rgb(14, 25, 39), rgba(10, 22, 36, 0.6), rgba(10, 12, 55, 0.4));
 }
 
 .divv4 .text {
@@ -223,7 +225,7 @@
 }
 
 .divv4 h1 span {
-    color: #248D27
+    color: white
 }
 
 .divv4 .box {
@@ -273,7 +275,7 @@
 }
 
 .divv5 .sub1 h1 span {
-    color: #248D27;
+    color: rgb(6, 39, 90);
 }
 
 .divv5 .sub1 p {
