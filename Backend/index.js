@@ -23,7 +23,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(CheckforAuthCookie("token"));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin:["https://cafeteria-hackathon-frontend.vercel.app"],
+  methods:["POST","GET"],
+  credentials:true
+}));
 
 // app.use("/api/geocode/",MapRouter)
 app.use("/api/add-new/",itemRouter)
