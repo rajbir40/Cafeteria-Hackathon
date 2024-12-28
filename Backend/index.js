@@ -4,6 +4,12 @@ const cors = require("cors");
 
 const app = express();
 const PORT = 5000;
+app.use((req, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Add allowed methods
+       res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Add allowed headers
+        next();
+    });
 const HOST = "192.168.54.63";
 const { ConnectMongoDB } = require("./connection");
 const { CheckforAuthCookie } = require("./middlewares/auth");
